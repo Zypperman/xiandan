@@ -1,0 +1,51 @@
+- finish up readme, make it look like pytorch documentation
+- formalize contributing guide
+    - limited to 1 example that you need to build on for each topic, dont use analogies
+    - state clearly assumptions, cite properly
+- figure out template for content, likely just gonna use as little markdown as possible
+    - possible formats: 
+        - just raw markdown all the way
+        - rst? cuz apparently its what pytorch uses also, will look into it later
+        - jupyter notebooks, work and are the easiest to wrangle content
+            - maybe have a toggle, so if people want to try coding out a solution they can just switch to it
+            - potential challenge: switching between text and latex on markdown, lazy to do. obsidian can solve this i think
+        - javascript for small coding envs? cuz if this then why not jupyter
+    - visualisations, can handle with excalidraw, manim and whatever
+- come up with a content organisation plan (yea i have no idea, gonna just dump what I have in my head for now)
+    - obsidian knowledge graph format might work but prolly will scare off people
+    - roadmap looks nice, but not sure how to format it, will deal with it later
+    - V1 will just be me making a folder for what I think is necessary, then following DAP content structure
+    - math primitives for like refresher up till jc i guess, stuff like probability, log, trigo and whatever, I have no idea, think about it later
+    - discrete math
+    - proofwriting
+    - LA
+        - Tensors, very impt like the semantic understanding not just doing dimensions with your numbers
+    - stats
+    - calc
+    - linear reg and eval metrics
+    - classification and eval metrics
+    - ensemble techniques
+    - basic NNs
+    - Recsys
+    - Time series 
+    - Sequential data, RNNs, LSTMs
+        - advanced time series for all the finbros
+    - Transformer core (attention types etc)
+    - Image transformer core
+    - Generative AI Core
+    - Transformer optimizations
+        - introduce deepseek's model improvements ie multilatent attention
+    - NNs for 3D applications (gaussian splatting, other models)
+    - NNs for audio applications (classification and generation)
+    - NNs for generation
+    - Neurosymbolic AI
+    - set one side for papers, indiv coverage + coverage where relevant
+        - ie bandahau attention, att is all you need etc
+    - Pytorch error logging and how to self help and troubleshoot
+    - a few languages that are important for troubleshooting, so CUDA, YAML, C++, C and Java cuz sometimes that
+    - Deployment
+    - Quantum NNs (ansatz design, QAOA, QAE, Grover's alg. Shor's Alg)
+- figure out how to translate 10th DAP content and address errors and mistakes made in slides
+    - remove the fluff that isnt core content
+
+- look into using https://www.transcrypt.org/ -- python compiler in js, but that prolly means revamping the entire page
