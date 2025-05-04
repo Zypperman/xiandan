@@ -20,7 +20,7 @@ DAP (Data Associates Program) is an academic program run by SMU BIA (Business In
 ## Contribution guide
 - I'll cook up some standards, but they ultimately serve the objective of teaching the average joe as fast as possible.
 - use as few examples as needed
-- cite sources together with written content. cite at the bottom if possible, and once there are too many links I'll go figure out how to scale from there.
+- cite sources under each folder's `sources.md` file . cite at the bottom if possible, and once there are too many links I'll go figure out how to scale from there.
 
 ## Dedications
 - All members and organisers of the 9th and 10th DAP rounds.
