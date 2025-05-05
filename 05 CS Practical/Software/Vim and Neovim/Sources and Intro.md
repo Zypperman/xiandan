@@ -1,0 +1,23 @@
+# Vim / NeoVim
+
+## Intro
+- Vim - Text
+
+
+## Sources
+
+- Internal docs
+    - do `vimtutor` from your shell prompt and its a 30 min tutorial from here.
+
+- [Primagen](https://www.youtube.com/@ThePrimeagen) for a good introduction
+    - [Vim playlist](https://youtu.be/X6AR2RMB5tE?si=Bd8dPjsSKXSKOa9C) (2%)
+    - [Vim RC intro](https://www.youtube.com/watch?v=w7i4amO_zaE&ab_channel=ThePrimeagen)
+
+- [The Vim subreddit](https://www.reddit.com/r/vim/) for intermediate and advanced functions
+    - ["Learn Vim with good resources"](https://www.reddit.com/r/vim/comments/xzc5fb/learn_vim_with_good_resources/)
+        - https://vim-adventures.com/
+        - https://learnvimscriptthehardway.stevelosh.com/
+
+- Vs Code extensions
+    - [Vim emulator (by vscodevim)](https://marketplace.visualstudio.com/items/?itemName=vscodevim.vim)
+    - [Learm Vim VS Code extension (by Vintharas)](https://marketplace.visualstudio.com/items/?itemName=vintharas.learn-vim)
