@@ -15,7 +15,7 @@ DAP (Data Associates Program) is an academic program run by SMU BIA (Business In
     - to a rigorous degree
     - as fast as possible
 - To teach any ancillary topics that might be needed (ie. what caching is, so for that its good to go into Computer Organisation and operating systems. We will just provide for it, but obviously if its not necessary you don't need to look for it.)
-    - computer organisation and OS 
+    - computer organisation and OS
     - SWE design patterns so its easier to collaborate
     - source control
 
@@ -24,6 +24,7 @@ DAP (Data Associates Program) is an academic program run by SMU BIA (Business In
 - I'll cook up some standards, but they ultimately serve the objective of teaching the average joe as fast as possible.
 - use as few examples as needed
 - cite sources under each folder's `sources.md` file. Cite at the bottom if possible.
+- articles will just be sorted YYMMDD because I can't be bothered to deal with it now.
 
 ## Dedications
 
@@ -43,10 +44,9 @@ DAP (Data Associates Program) is an academic program run by SMU BIA (Business In
         - AWS (Current)
         - Git and Github (Next)
 
-
 ## Future extensions
 
 - formalize contribution guide
 - other programming languages
 - other cs theory
-- other topics in my degree like law, but I'll need to check the viability of this
+- other topics in my degree like law, but I'll need to check the viability of this.
