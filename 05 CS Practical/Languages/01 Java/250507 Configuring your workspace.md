@@ -1,4 +1,4 @@
-# Java Configs and Exposition
+# Java Exposition and Configs
 
 ## Transitioning from solving small problems into the SWE mentality
 
