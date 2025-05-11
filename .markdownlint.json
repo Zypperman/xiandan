@@ -6,6 +6,6 @@
 "MD013": false
 ,
 "MD033": {
-    "allowed_elements": ["u", "span","a"]
+    "allowed_elements": ["u", "span","a","details","summary","br"]
 }
 }

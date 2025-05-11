@@ -1,4 +1,4 @@
-# Horizontal movements in Vim
+# Horizontal movements
 
 ## Navigation with absolute references
 

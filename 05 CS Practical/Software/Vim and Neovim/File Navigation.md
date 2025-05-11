@@ -23,4 +23,14 @@ For layman purposes, just ignore what $HOME refers to.
 
 - `%` - "create new file", prompt will appear for naming your new file.
 - `d` - "Directory", prompt will appear for naming your new file.
-- 
+
+## File handling commands
+
+<!-- TODO: check if this is correct -->
+
+- `:so` - "source", from NORMAL mode, checks if your file compiles successfully.
+    - But it only works for vim scripts i think
+- `:e` - "edit", enter INSERT mode, but now you open a new register / buffer (so you don't have access to what you copied if you had insert mode on another buffer.)
+    - buffers can be listed using `:ls`.
+
+ 

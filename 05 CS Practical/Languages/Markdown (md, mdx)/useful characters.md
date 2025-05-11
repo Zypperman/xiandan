@@ -67,6 +67,18 @@ renders:
 > [!CAUTION]
 > Advises about risks or negative outcomes of certain actions.
 
+you can also just use the color and icon scheme and give each alert its own header, ie:
+
+```markdown
+> [!CAUTION] Watch Out
+> Advises about risks or negative outcomes of certain actions.
+```
+
+Renders:
+
+> [!CAUTION] Watch Out
+> Advises about risks or negative outcomes of certain actions.
+
 But note that there is a linting requirement (MD028) where two alerts cant exactly be together, because some parsers (that render your markdown) will treat two blockquotes separated by one or more blank lines as the same blockquote, while others will treat them as separate blockquotes. (see [documentation on MD028](https://github.com/DavidAnson/markdownlint/blob/main/doc/md028.md))
 
 Github representation context can be found [here](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts).

@@ -47,9 +47,10 @@ Motions can be formatted as `<command><count><motion>`.
     - **Commands** operations that can be chained with navigation
     - `d` - "delete" - prefix to delete, combine with `<num><motion>`
         - `d` (non-chained)- "delete" - double-tap to delete a line.
+        - Behaves functionally like cut, cuz anyway whatever's deleted is sent to the same buffer.
     - `c` - "change"
     - `y` - "yank/copy"
-    - `v` -
+    - `v` - "visual mode" - for highlighting
 
 ## Operation history (Undo and Redo)
 
