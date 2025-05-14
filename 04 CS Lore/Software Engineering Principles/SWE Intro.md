@@ -1,4 +1,4 @@
-# Java Exposition and Configs
+# SWE Exposition and Configs
 
 ## Transitioning from solving small problems into the SWE mentality
 
@@ -17,12 +17,6 @@ Tangible changes include:
 - from single use variables to increasingly codependent variables
 - From coding with self-assigned conventions to convention that are more transparent (no single-letter variables).
 - from single states to codependent states
-
-## Favorable properties of Java
-
-- Statically typed - declared vars can't change type
-- OOP-friendly - good for SWE and flexibility
-- Functional-programming suited - input and outputs are predictable
 
 ## SWE principles (broadly)
 
@@ -54,13 +48,28 @@ Tangible changes include:
 
 > "Each significant piece of functionality in a program should be implemented in just one place in the source code. Where similar functions are carried out by distinct pieces of code, it is generally beneficial to combine them into one by abstracting out the varying parts."
 
-TLDR, write to achieve minimal repetition. There should be no intersection in your functions and their individual functionality.  
+TLDR, write to achieve minimal repetition. There should be no intersection in the individual functionality of your functions. (Either they do something on their own, or theyre made of more helper functions with abit more code.)
 
 This also applies to:
     - Types &#8594; parameterized types or subtypes
     - sub-computation, between helper and first-class functions.
-    - 
 
+## The Abstraction Barriers (dividing role responsibilities)
+
+Refers to how you should separate your code. It should basically either:
+
+- use other functions (Client role)
+- be used to make 1 function (Implementer role)
+
+As an implementer, the functions you make should be black-boxed.
+
+- Clients don't need to know what goes on inside.
+- CLients should know what goes in and out through <u>exposed parameters</u> and <u>return values</u> respectively.
+
+This is done at multiple levels with practices like:
+
+- Functional programming
+- 
 
 
 

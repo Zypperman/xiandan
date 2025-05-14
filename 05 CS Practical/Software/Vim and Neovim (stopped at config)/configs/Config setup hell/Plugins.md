@@ -63,3 +63,5 @@ First, make sure you have a package manager of your choice and use the appropria
     - Vim integration for Git.
     - `<space>gs` - "git status", pulls a dialog box out.
 
+- [copilot](https://github.com/github/copilot.vim)
+    - github copilot for vim.
