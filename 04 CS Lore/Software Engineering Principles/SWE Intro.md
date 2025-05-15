@@ -1,5 +1,7 @@
 # SWE Exposition and Configs
 
+Taken from <https://nus-cs2030s.github.io/2021-s2/00-overview.html>.
+
 ## Transitioning from solving small problems into the SWE mentality
 
 write with the following in mind:
@@ -29,6 +31,9 @@ Tangible changes include:
     - L - Liskov's Substitution principle
 - Tell-Don't-Ask
 - Composition over Inheritance
+- closure
+    - passing functions into their implementation
+    - hints towards what a monad is: "A computational structure that allows objects to be composed and manipulated in a succinct and powerful way."
 
 ### SWE conventions
 
@@ -69,7 +74,42 @@ As an implementer, the functions you make should be black-boxed.
 This is done at multiple levels with practices like:
 
 - Functional programming
-- 
+- encapsulating objects
+- access modifiers (so some functions cant access certain parts of code)
 
+### Evaluation
+
+| Benefits | Drawbacks |
+| ----------- |----------- |
+| reduces code complexity | reduces flexibility as you scale |
+| Cleanly splits roles|client now needs to ask implementer to change where required, difficult to maneuver|
+
+### Handling types
+
+- Important the moment you allow other people to change code behaviour without changes to existing code.
+- Mostly involves dealing with your language's type system, and is when concepts like subtyping and the Liskov substitution principle becomes important to prevent bugs.
+- Typing also helps assert predictable behaviour in your code. Most prominent show of this is with [negative-space typing](https://youtu.be/jc_6ZkkOUpQ?si=mP8nnDyjS1rnEJ2n).
+
+### Asserting predictable behaviour
+
+- Assert with the following practices:
+    - functions shouldn't modify variables outside its scope (termed "pure functions")
+    - Don't modify objects after they are created ( concept is termed "immutability") and you update them by destroying and creating a new one in its place 
+    - 
+
+
+
+
+
+
+
+
+
+
+
+# Videos to consider watching
+
+- CodeAesthetic 
+    - [Abstraction can make your code worse](https://youtu.be/rQlMtztiAoA?si=AvShXt40_S-KFuUG)
 
 
