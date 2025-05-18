@@ -1,18 +1,18 @@
-# SWE Exposition and Configs
+# SWE Exposition
 
 Taken from <https://nus-cs2030s.github.io/2021-s2/00-overview.html>.
 
 ## Transitioning from solving small problems into the SWE mentality
 
-write with the following in mind:
+Code with the following in mind:
 
 1. Maintainability (long term simple code v short term slipshot solution)
 2. Scalability (solutions can be improved easily)
 3. Transparency (with design patterns, implementations etc)
 
-All have continuity in mind, which is important since ultimately humans are involved. Hence, on top of resource-efficiency, you need to consider how make your project easy for adoption and maintenance by other people, and the chance of bugs is basically 0.
+Ultimately, your project needs to be easy for others (and your future self) to adopt and maintain, and results in minimal bugs. (On top of being resource-efficient.)
 
-Tangible changes include:
+Tangible changes in coding mentality include:
 
 - From solving a single problem to a multidimensional one
 - From dealing with 1 component to dealing with multiple components (ie Frontend and Backend, DBs and UIs)
@@ -53,11 +53,11 @@ Tangible changes include:
 
 > "Each significant piece of functionality in a program should be implemented in just one place in the source code. Where similar functions are carried out by distinct pieces of code, it is generally beneficial to combine them into one by abstracting out the varying parts."
 
-TLDR, write to achieve minimal repetition. There should be no intersection in the individual functionality of your functions. (Either they do something on their own, or theyre made of more helper functions with abit more code.)
+TLDR, write to achieve minimal repetition. There should be no intersection in the individual functionality of your functions. (Either they do something on their own, or theyre made of other functions + abit more code.)
 
 This also applies to:
-    - Types &#8594; parameterized types or subtypes
-    - sub-computation, between helper and first-class functions.
+- Types &#8594; parameterized types or subtypes
+- sub-computation, between helper and first-class functions.
 
 ## The Abstraction Barriers (dividing role responsibilities)
 
@@ -69,7 +69,7 @@ Refers to how you should separate your code. It should basically either:
 As an implementer, the functions you make should be black-boxed.
 
 - Clients don't need to know what goes on inside.
-- CLients should know what goes in and out through <u>exposed parameters</u> and <u>return values</u> respectively.
+- Clients should only know what goes in and out through <u>exposed parameters</u> and <u>return values</u> respectively.
 
 This is done at multiple levels with practices like:
 
@@ -92,20 +92,9 @@ This is done at multiple levels with practices like:
 
 ### Asserting predictable behaviour
 
-- Assert with the following practices:
-    - functions shouldn't modify variables outside its scope (termed "pure functions")
-    - Don't modify objects after they are created ( concept is termed "immutability") and you update them by destroying and creating a new one in its place 
-    - 
-
-
-
-
-
-
-
-
-
-
+- Done by observing the practices:
+    - Functions shouldn't modify variables outside its scope (termed "pure functions")
+    - Don't modify objects after they are created ( concept termed "immutability") and you update them by destroying and creating a new one in its place
 
 # Videos to consider watching
 
