@@ -51,8 +51,10 @@ This has led to the creation of 2 new ideas:
 | Difficult to expand | pushing mostly involves only software |
 | Generally unreliable | versions can be restored easily |
 | Complex to maintain long-term | version differences are easy to oversee |
-| Variable Latency due to I/O <br>bottlenecks and unpredictability |  |
-| High cost for all parties |  |
+| Variable Latency due to I/O <br>bottlenecks and unpredictability | Latency is easier to solve since problem areas can be isolated to specific hardware |
+| High cost for all parties (termed TCO, Total cost of ownership)| Companies own most of the hardware, work on a Service as a Service (SaaS) model|
 
 ## What it is
+
+
 
