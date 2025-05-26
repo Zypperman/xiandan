@@ -1,9 +1,14 @@
 # Writing Good Code 101
 
-## 1. Don't nest more than 3 layers
+## 1. Separate responsibilities among logic
+
+Functions should only do 1 thing, and Segments should each only have 1 responsibility (and be named appropriately and intuitively)
+
+## 2. Don't nest more than 3 layers
 
 - Nesting conditions makes code hard to read since you need to keep it all in your head, so core logic will be difficult to expand on.
 - **General solution: handle alternate routes first.**
+- Also, a good way to prevent this is by setting your the number of spaces your tab character does to 8 spaces. Good for reading while drained, and a good indication of whether you have too many nests.
 
 ### Solution 1: Inversion / Guard Clauses
 
@@ -36,7 +41,7 @@ print("come in")
 
 This allows developers to have less conditions to worry about and ignore.
 
-## 2. Merge related if-statements
+## 3. Merge related if-statements
 
 - Sometimes granularity is not really required.
 - If two logic blocks are functionally the same condition, just merge them.
@@ -64,7 +69,7 @@ print("come in")
 
 This decreases repetition at the cost of functionality. Decide if this is worthwhile by checking if the two functions are really that different.
 
-## 3: Abstraction
+## 4: Abstraction
 
 - Improve readability by abstracting logic that isnt relevant into helper functions.
     - Cons:
@@ -74,7 +79,7 @@ This decreases repetition at the cost of functionality. Decide if this is worthw
         - Refactoring will be extremely easy since code isnt repeated, you can just modify 1 helper function used everywhere instead of multiple blocks that are used everywhere
         -
 
-## 4. Variables should be named meaningfully
+## 5. Variables should be named meaningfully
 
 Self explanatory.
   
@@ -88,7 +93,7 @@ Some Conventions to follow for transparency:
 - dont use "base" or "abstract" in your parent classes. Instead, rename your child classes.
 - The "Utils" class is a sacred space. Do not just throw in helper functions as you make them. Consider if they are more appropriate to be placed under their own type or module.
 
-## 5. Write good unit tests
+## 6. Write good unit tests
 
 1. make sure your code follows rules 1 to 4 above (ie modularize your code)
 2. Write tests as functions that are named as the tests themselves ie. `TestIsBlankStringShouldReturnTrueWhenBlank`
@@ -105,23 +110,15 @@ Some Conventions to follow for transparency:
     - Regression (in SWE Context) &#8212; A change that breaks code that has already been tested.
     - Regression testing &#8212; A test that checks for regressions.
 
-## Useful Constructs
+## Misc tips:
 
-### First Class functions
-
-A function that you can treat like an object.
-
-- They can be:
-    - assigned to variables
-    - passed as arguments
-    - returned from other functions
-
-Technically speaking, we are asserting that the implemented form of the  abstract idea of the function  the function's implementation as w
-
-in Javascript:
-
-- Counterpart: Lambdas
-    - Functions that do not have a name, typically used for convenience ie. python &#8594; `lambda x: 2x` to return 2 times the input
+- Do not break user-visible log messages.
+    - you cant grep for them if you break the string. (fyi grep is a linux command for matching string patterns.GREP &#8594; Global Regular Expression Print.)
+    - Solution: break and concatonate the parts.
+- The more complicated your logic, the shorter that segment should be.
+    - a long set of switch cases is fine.
+    - A long piece of spaghetti for some function that looks weird isn't.
+- Comments shouldnt explain what you write, just refactor it.
 
 ## Sources
 
@@ -130,3 +127,5 @@ in Javascript:
     - ["The 3 Laws of Writing Bug Free Code"](https://youtu.be/-AzSRHiV9Cc?si=wqGkZDYRm8szBAJf)
 - CodeAesthetic
     - [Naming Things in Code](https://youtu.be/-J3wNP6u5YU?si=G0FyYg6O9J7D5MXe)
+
+<!--TODO: https://youtu.be/qHa0h8SWI00?si=QwiWPid5TuO89DDt add this-->
