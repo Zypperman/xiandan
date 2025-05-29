@@ -54,7 +54,7 @@ This has led to the creation of 2 new ideas:
 | Variable Latency due to I/O <br>bottlenecks and unpredictability | Latency is easier to solve since problem areas can be isolated to specific hardware |
 | High cost for all parties (termed TCO, Total cost of ownership)| Companies own most of the hardware, work on a Service as a Service (SaaS) model|
 
-## Service Migration (from a developer POV)
+## Types of technical infrastructure
 
 Conventional Architecture
 
@@ -133,11 +133,11 @@ Cloud Architecture
           > Its abit like how you can set up a config file for an ide.
 - **Quick deployment and auto-scaling**
     - If you need to change or scale quickly, capabilities can be expanded or upgraded easily
-    - resources can be rented conveniently, regardless of time and amount, the only limiting factor is cost
+    - resources can be rented conveniently, regardless of time and amount, your only limiting factor is cost
 - **Measured services**
     - Billing is based on actual resource consumption, under one of 2 models
-        - billing per use
-        - billing per period (yearly/monthly)
+        - per use
+        - per period (yearly/monthly)
 
 ## Tangible Technologies involved
 
@@ -148,11 +148,16 @@ Cloud Architecture
 - Your pretend-machine needs to handle:
     - <u>replicating hardware functions without actual hardware</u> (termed "needs to abstract hardware")
     - manage, schedule and allocate resources
+- **How VMs work**:
+    - A VM just a set of disk files and description files
+    - all these files are in the same folder, considered 1 VM
+    - Multiple VMs on a server are encapsulated, and run isolated from each other.
+    - basically somewhat freeing you from hardware requirements by decoupling your software and having hardware functioons simulated.
 
 ### 2. Data storage tech
 
 - Data-wise, cloud computing needs to be able to handle :
-    - large user-bases using them 
+    - large user-bases using them
     - multiple users <u>at the same time</u> (termed "in parallel")
 - Accomplished via:
     - being <u>able to process large amounts of information at a time</u><br>(termed "high throughput")
@@ -166,9 +171,58 @@ Cloud Architecture
     - Optimizing the <u>speed of retrieving random bits of info</u><br>(termed "random read rate")
     - Optimizing the <u>speed of changing random bits of info</u><br>(termed "data update rate")
 
-### 4. Parallel Computing tech
+### 4. Parallel Computing tech (Map-reduce Model)
 
-- To support multiple users in paralllel, the architecture is adopted
-
+- Map-Reduce is both a <u>programming model</u> and <u>task scheduling</u> model.
+    - Named because users only need to compile Map and Reduce Functions to perform parallel computing
+    - Typically adopted because its a simple model
+    - Exists because cloud computing runs on a distributed computing mode &#8594; therefore needs a distributed programming mode.
+    - Handles (in parallel):
+        - schedulig tasks
+        - computing data sets
 
 ### 5. Cloud computing (CC) management tech
+
+Needs to solves the following problems:
+
+- handle running a lot of applications simultaneously
+- managing resources factoring in distance and sheer quantity in hardware (ie how do you handle over multiple servers)
+- provide uninterrupted service
+
+## Common Characteristics of Cloud computing (interview qn content)
+
+1. Massive scale
+    - Resources are centralised and pooled and facilitiating a cloud involves a large quantity of resources.
+2. Homogenity / standardisation
+    - Power utiization (ie voltage and socket interface) should be the same for various devices involved
+    <!-- TODO: Figure out what this means -->
+3. Virtualization (2 interpretations)
+    1. Resouces can be allocated more efficiently by resizing VMs, ie if a person doesn't need so much compute, the resources that their VM can access can be modified and shared with other VM users. (accurate computing requirements)
+    2. software is not solely compatible with single hardware because its decoupled, meaning you can just move your machine over to another one. (resilient computing)
+4. Elastic Computing
+    - IT resources can be elastically provided (requests for more or less can easily be accomodated for)
+5. Low Cost software
+    - Cloud computing is easier ad cheaper to set up because of market competition and requirements. Smaller establishments ie SMEs prefer this, where more services can be enjoyed for a smaller cost to maximise their earnings (with a larger margin of safety so that they can expand faster)
+6. Advanced Security tech available
+    - Security is high due to the large number of users with different requirements using the cloud
+7. Geographical distribution
+    - cloud services can be provided independent of time and space, so long as there is an internet connection.
+    - servers and data centers are usually well distributed across strategic locations and regions to facilitate a high bandwidth
+    - service nodes need to be capable of providing good availability globally
+8. Service oriented
+    - this is by design since cloud computing is considered a service model.
+
+## Deployment models for cloud computing
+
+- 3 main types:
+    - private cloud &#8212; fully enterprise controlled
+        - data in the private cloud is kept in the organisation's data center
+        - incoming network traffic is firewall-protected (termed an "ingress firewall"), making the data center highly secure.
+    - hybrid cloud &#8212; mix of both private and public cloud
+        - utilises resources from both public and private cloud
+        - involves on-premise resources, but remains as distinct entities
+        - its how to ensemble benefits from both models
+        - workloads can be migrated as needed
+    - public cloud &#8212; entirely exposed to 3p vendor, shared with multiple other organisations
+        - users get access to convenient, on-demand IT services
+
