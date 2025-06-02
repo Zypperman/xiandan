@@ -49,15 +49,14 @@ Multi-line comments look like this.
 
     - Breakdown of what all those keywords mean: [G4G](https://www.geeksforgeeks.org/java-main-method-public-static-void-main-string-args/)
 
-## exploring documentation
+## Exploring documentation
 
 - just refer to oracle, make sure the SE matches the SDK you use.
     - SE &#8212; Standard Edition
 - most of what beginners need can be found in the java.base module:
-    ![test](https://github.com/Zypperman/xiandan/blob/main/Current/01%20Java/Images/videoframe_79167.png)
-    ![alt](https://)
+    ![what you'll probably see](https://github.com/Zypperman/xiandan/blob/main/source/Java/videoframe_79167.png)
 -
 
 ## Sources
 
-- IBM Developer \em ["Overview of the Java API documentation and how to use it"](https://youtu.be/ULEOb8wLa_k?si=iBf3RzN2wcjt3WZc)
+- IBM Developer &#8212; ["Overview of the Java API documentation and how to use it"](https://youtu.be/ULEOb8wLa_k?si=iBf3RzN2wcjt3WZc)
