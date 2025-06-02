@@ -5,7 +5,7 @@ StartDate = datetime.date(2025, 5, 3)
 Today = datetime.date.today()
 Now = datetime.datetime.now()
 current_hour, current_min = [int(i) for i in Now.strftime("%H %M").split()]
-EndOfDay = datetime.timedelta(hours=23, minutes=59)
+EndOfDay = datetime.timedelta(hours=22, minutes=00)
 
 LoggedDate = Today.strftime("%d %b %Y")
 Opentime = Now.strftime("%H :%M")
@@ -31,7 +31,7 @@ currentWeek = get_week_number()
 
 logtext = f"""# {LoggedDate}
 
-- Opened VSC at {Opentime}. ({hours} hours and {mins} minutes left to EOD)
+- Opened VSC at {Opentime}. ({hours} hours and {mins} minutes left to 10pm)
 """
 
 folder_path = f"00 Devlogs/W{currentWeek}"
