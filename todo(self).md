@@ -3,7 +3,7 @@
 "My body is a machine that turns  <span style="color:skyblue"> <u>stuff I plan to do</u></span> into <span style="color:skyblue"><u>stuff I planned to do but didn't finish</u>"
 
 <div align="center">
-<img src='source\_static\img\shook_skelly.gif'></div>
+<img src='source\_static\img\shook_skelly.gif' alt="bruh skelly"></div>
 
 ----
 

@@ -51,11 +51,20 @@ Multi-line comments look like this.
 
 ## Exploring documentation
 
-- just refer to oracle, make sure the SE matches the SDK you use.
+- just refer to oracle, make sure to check SE, not JDK.
     - SE &#8212; Standard Edition
-- most of what beginners need can be found in the java.base module:
-    ![what you'll probably see](https://github.com/Zypperman/xiandan/blob/main/source/Java/videoframe_79167.png)
--
+    - the JDK documentation is what you need for documentation for improving the language. the SE documentation is what developers use for apps.
+- most of what beginners need can be found in the java.base module.
+    <div><img src='..\..\source\Java\videoframe_79167.png' alt="bruh skelly"></div>
+- This brings you to a page of packages with useful fleshed out classes like:
+    - io
+    - time
+- Javadocs are structured as:
+    - classes
+    - enums
+    - exceptions
+- if unsure which package you need, just click "all classes" and search from there.
+- each class also has a tab in its docs page called "USE" to see where it exists in other packages.
 
 ## Sources
 
