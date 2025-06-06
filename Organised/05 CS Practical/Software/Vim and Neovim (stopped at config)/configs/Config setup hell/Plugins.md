@@ -2,11 +2,11 @@
 
 First, make sure you have a package manager of your choice and use the appropriate syntax for installing stuff with it. We use lazy.nvim (tutorial uses packer but its now unmaintained, see [Packer's Github Repository](https://github.com/wbthomason/packer.nvim?tab=readme-ov-file).)
 
-1. 
-
 [Find plugins here. Thank RockBOO.](https://github.com/rockerBOO/awesome-neovim)
 
 ## Using Packer
+
+after writing everything nicely, check if your packer file compiles properly with `:so`, then 
 
 ## Essentials
 

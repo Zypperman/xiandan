@@ -9,6 +9,7 @@ Before you enter vim, make sure you have your CLI commands down. (refer to the g
 My term for the text UI you see after doing `nvim .` or `vim .` from your CLI.
 
 - `:Ex` - From NORMAL MODE brings you back to FE Mode.
+    - remapped to `<space>pv` in my machine. See [this section](https://github.com/Zypperman/xiandan/blob/ccec36ddf2278bee6dbde8b4dbf13c5012ee4e1e/Organised/05%20CS%20Practical/Software/Vim%20and%20Neovim%20(stopped%20at%20config)/configs/Config%20setup%20hell/.Vim%20Config.md) in my config articles.
 
 ## Important filepaths
 

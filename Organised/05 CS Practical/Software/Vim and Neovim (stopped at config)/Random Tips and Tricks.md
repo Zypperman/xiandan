@@ -13,3 +13,4 @@ On your text-editor client, full documentation can be accessed at various levels
 ## Useful stuff (from personal experience)
 
 - `=` - in VISUAL mode, formats your indentation for you
+- `/` - in NORMAL mode, triggers a search, confirm with `enter` key

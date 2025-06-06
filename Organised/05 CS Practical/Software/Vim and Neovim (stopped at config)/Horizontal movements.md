@@ -26,7 +26,7 @@ From here, you can just trigger these funtions repeatedly using:
 
 - `shift+f <char>` - "First", moves cursor to first instance of a specific character before the cursor.
 
-## Using Micro-search with operations
+## Combo-ing micro-search with operations
 
 You can treat these like motions and use them with operations to select sections you want to apply them to.
 

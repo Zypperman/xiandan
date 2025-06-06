@@ -66,6 +66,8 @@ Multi-line comments look like this.
 - if unsure which package you need, just click "all classes" and search from there.
 - each class also has a tab in its docs page called "USE" to see where it exists in other packages.
 
+## variable declaration
+
 ## Sources
 
 - IBM Developer &#8212; ["Overview of the Java API documentation and how to use it"](https://youtu.be/ULEOb8wLa_k?si=iBf3RzN2wcjt3WZc)

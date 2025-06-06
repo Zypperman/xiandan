@@ -42,7 +42,7 @@ Tangible changes in coding mentality include:
 
 #### Functions
 
-- break down your functions so that each perform simple, specific tasks. 
+- break down your functions so that each perform simple, specific tasks.
   
     Doing so helps with:
     - analysing resource complexity for speedy improvements.
@@ -56,6 +56,7 @@ Tangible changes in coding mentality include:
 TLDR, write to achieve minimal repetition. There should be no intersection in the individual functionality of your functions. (Either they do something on their own, or theyre made of other functions + abit more code.)
 
 This also applies to:
+
 - Types &#8594; parameterized types or subtypes
 - sub-computation, between helper and first-class functions.
 
@@ -96,9 +97,7 @@ This is done at multiple levels with practices like:
     - Functions shouldn't modify variables outside its scope (termed "pure functions")
     - Don't modify objects after they are created ( concept termed "immutability") and you update them by destroying and creating a new one in its place
 
-# Videos to consider watching
+## Videos to consider watching
 
-- CodeAesthetic 
+- CodeAesthetic
     - [Abstraction can make your code worse](https://youtu.be/rQlMtztiAoA?si=AvShXt40_S-KFuUG)
-
-
