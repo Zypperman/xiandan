@@ -31,7 +31,7 @@
             - dealing with class data ie class attributes (values that every object starts with)
                 - ie a Bank Class where its' objects represent banks in a town, theres a rule that all banks should have the same base interest rate as a class attribute. Class methods will manipulate that class attribute.
                 - ie the same bank class, you have a function that can create a bank instance in a different way (ie `Bank.fromstring('some_string')`)
-        - Interacting with yourself (structure as class methods)
+        - Static methods &#8212; Interacting with yourself (structure as class methods)
             - can work independent of class state
             - basically a function that could exist outside your class, but makes sense to keep in your class since you only need it for that class.
             - ie. calculating interest in a bank class, when your software revolves around a game and you will only ever need the function to calculate interest when banks are involved.
