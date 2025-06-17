@@ -14,7 +14,7 @@
 ## Object Oriented Programming
 
 - Class &#8212; a user-defined data type.
-    - *"What a thing is and what it does"*
+    - *"A type of thing, what it is"*
     - Can be used as a blueprint for what an entity or concept is
     - Also contains how entities under this type behave and interact.
 - Object &#8212; an instance of a Class.
@@ -39,6 +39,50 @@
         - ie. With Students from a school (where students are objects in a student class and school)
 - Attributes &#8212; describe the state of an object
     - *"Information about a thing"*
+
+## OOP Concepts
+
+- Reflection &#8212; where you can access and change any information about objects you've created.
+    - more relevant when compiling your project takes a while, so being able to inspect and edit aspects of your program at runtime instead of needing to recompile your instance is good.
+    - some languages that can do this are python, Go, C# and Java.
+    - a good example is python OOP which has no real concept of public or private information, except by syntax (where devs just mark private information by doing [name mangling](https://www.geeksforgeeks.org/python/name-mangling-in-python/)):
+
+        ```python
+        class Student:
+            def __init__(self, name):
+                self.__name = name # name mangled attribute
+            
+            def getName(self):
+                return self.__name
+            def __updateName(self,newName): # name mangled method
+                self.__name = newName
+                
+            def updateName(self):
+                newName = input("what is your new name?")
+                self.__updateName(newName)
+                print(f"Name Updated! New name is {newName}")
+
+            
+        s1 = Student("Santhosh")
+        print(s1.getName())
+        s1.updateName()
+        print(s1.getName())
+        print(dir(s1))
+        """Output:
+        Santhosh
+        what is your new name?Daisy
+        Name Updated! New name is Daisy
+        Daisy
+        ['_Student__name', '_Student__updateName', '__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'getName', 'updateName']
+        """
+        ```
+
+        Name mangling:
+
+        - when you declare an attribute and want it to be private, you can add 2 underscores in front of it to make its name weirder (formats into `_<class>__<name>`)
+        - works with both attributes and methods.
+        - but as long as you know this syntax, you can still edit stuff at runtime.
+    - Java uses the package `java.lang.reflect` ([Docs here](https://docs.oracle.com/javase/8/docs/api/java/lang/reflect/package-summary.html)).
 
 ## Sources
 
