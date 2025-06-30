@@ -1,6 +1,6 @@
 # Basics (Java)
 
-## Commenting
+## Commenting and imports
 
 ```Java
 // Single-line comments start with //
@@ -8,7 +8,11 @@
 /*
 Multi-line comments look like this.
 */
+```
 
+### JavaDocs
+
+```Java
 /**
  * JavaDoc comments look like this. Used to describe the Class or various
  * attributes of a Class.
@@ -24,22 +28,36 @@ Multi-line comments look like this.
 */
 ```
 
-## Orientation
+### Package import declaration
 
-1. name your first program and create a class in it with the same name:
+find base packages on the [Oracle Java SE overview page of the docs](https://docs.oracle.com/en/java/javase/11/docs/api/).
+
+```Java
+// Import ArrayList class inside of the java.util package
+import java.util.ArrayList;
+// Import all classes inside of java.security package
+import java.security.*;
+// Java to illustrate calling of static members and methods without calling classname
+import static java.lang.Math.*;
+import static java.lang.System.*;
+```
+
+## Orientation (boilerplates)
+
+- 1 big Class per file, name your first program and create a class in it with the same name:
 
     ```java
     /*file named foobar.java*/
 
     class foobar{
-        public{
+        public static void main(String[] args){
 
         }
     }
     
     ```
 
-2. The program class checks for a main method to run:
+- The program class checks for a main method to run:
 
    ```java
    public static void main(String[] args){
@@ -67,6 +85,10 @@ Multi-line comments look like this.
 - each class also has a tab in its docs page called "USE" to see where it exists in other packages.
 
 ## variable declaration
+
+## printing to terminal
+
+- `System.out.println(<str_arg>);` &#8212; prints str_arg in the terminal.
 
 ## Sources
 
