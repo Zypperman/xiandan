@@ -14,6 +14,8 @@ Because theres multiple ways of doing the same thing but keeping track is gettin
   Build tags are placed before the package clause near or at the top of the file
   followed by a blank line or other line comments. */
 //go:build prod || dev || test
+
+// names should also have mixed caps ie fooBar
 ```
 
 ## Importing packages
@@ -420,8 +422,48 @@ employee1 := Employee {
 fmt.Println("Employee name:",employee1.name)
 ```
 
-(from docs)  
-A field declared with a type but no explicit field name is called an embedded field. An embedded field must be specified as a type name T or as a pointer to a non-interface type name *T, and T itself may not be a pointer type or type parameter. The unqualified type name acts as the field name.
+#### misc details
+
+- embedded fields &#8212; fields with no specified type.
+    - embedded fields are considered "promoted" if you can do `<struct_typed_var>.<embedded_field_name>`
+    - Promoted fields act like ordinary fields of a struct except that they cannot be used as field names in composite literals of the struct.
+        - composite literals &#8212; where you can create a struct first then add fields later when you create another struct, with some restrictions ([Docs](https://go.dev/ref/spec#Composite_literals)) :  
+
+        ```Go
+        // Standard declaration
+        type Point3D struct { x, y, z float64 }
+        type Line struct { p, q Point3D }
+
+        // shortform declaration
+
+        // zero value for Point3D
+        origin := Point3D{}
+        // zero value for line.q.x 
+        line := Line{origin, Point3D{y: -4, z: 12.3}} 
+        ```
+
+- tags &#8212; short-form metadata descriptions you can view with reflection
+
+    ```Go
+    struct {
+    x, y float64 ""  // an empty tag string is like an absent tag
+    name string  "any string is permitted as a tag"
+    _    [4]byte "ceci n'est pas un champ de structure"
+    }
+
+    // A struct corresponding to a TimeStamp protocol buffer.
+    // The tag strings define the protocol buffer field numbers;
+    // they follow the convention outlined by the reflect package.
+    struct {
+        microsec  uint64 `protobuf:"1"`
+        serverIP6 uint64 `protobuf:"2"`
+    }
+    ```
+
+    - Tags are usually used for formatting when objects are exported ie in json format, devs will note it as `` `<obj_format>:"<field_name>"` `` and separate with spaces. (ie. `` `json:"age" xml:"age"` `` )
+    - view with `reflect.StructTag`.
+    - for disputing type identity, [see rules here](https://go.dev/ref/spec#Type_identity).
+
 #### Anonymous Structs
 
 At the cost of overhead for declaring your struct properly as a type, you define a quick one-time datatype. Good if you just need something quick for a function.
@@ -531,6 +573,125 @@ Docs for struct methods can be found in the [tour of go](https://go.dev/tour/met
 
 ### Interfaces
 
+Interfaces are:
+
+- just a group of method names and their input and output types (termed "method signatures")
+- prevent code duplication by acting as an adapter for sibling classes
+
+To check if an object is considered a member of an interface, the object must implement all methods that the interface has
+
+### Why we use interfaces
+
+Before interfaces:
+
+```Go
+type Rectangle {
+    height int
+    weight int
+}
+
+type Circle {
+    radius int
+}
+
+func CircleArea(c Circle) float64{
+    return math.Pi * c.radius * c.radius
+}
+func RectangleArea(r Rectangle) float64{
+    return r.width * r.length
+}
+
+func main() void {
+    circle = Circle{5}
+    rect = Rectangle{5,5}
+    
+    circleArea = CircleArea(circle)
+    rectArea = RectangleArea(rect)
+
+    fmt.printf("Circle area is %v.", circleArea)
+    fmt.printf("Rectangle Area is %v.", rectArea)
+}
+```
+
+This code is bad because:
+
+- `CircleArea` and `RectangleArea` functionally do the same thing, just that because the shape is different we don't handle them the same way
+    - This creates unecessary code duplication and makes source code really long
+- if you were to add a new shape, you need to handle more unique function names which is bad practice since thers a higher chance that you'll end up with bugs in your code.
+
+With interfaces, you can use the same method name for similar objects, and even enforce certain things at compile time (ie what types your methods can return):
+
+```Go
+
+type Rectangle {
+    height int
+    weight int
+}
+
+type Circle {
+    radius int
+}
+
+type Shape interface{
+    Area() float64
+    // all members of this interface need to have an
+    // implementation of the functions that the 
+    // interface has to be considered a member
+}
+
+//rewrite area functions from using unique names to now using 
+//    struct methods and being members of the interface
+func (c Circle) Area() float64{
+    return math.Pi * c.radius * c.radius
+}
+func (r Rectangle) Area() float64{
+    return r.width * r.length
+}
+
+// write a wrapper function that accepts shape as a type
+// this function will accept the shape interface, and Area w
+func calculateArea(s Shape) float64 {
+    return s.Area()
+}
+
+func main() void {
+    circle = Circle{5}
+    rect = Rectangle{height:5,weight:5}
+    
+    fmt.printf("Circle area is %v.", calculateArea(circle))
+    fmt.printf("Rectangle area is %v.", calculateArea(rect))
+    // interface "shape" acts as an adapter to standardise code.
+}
+```
+
+This is a cleaner implementation.
+
+- while you can just make the `.Area()` method for both shapes, using interfaces guarantees that members have to meet specific requirements before they are considered usable and thus making testing easier, since theres less to test for (like literally whether a function exists), alongside enforcing of other OOP practicalities like:
+
+    - swapping out implementations won't be code dependent
+    - multiple developers can work on objects simultaneously cuz they interact with the rest of the code through the interface
+    - Cleaner API design
+
+### Interfaces are still types
+
+You can still use interfaces as types, and enforce behaviour and do stuff like validation:
+
+```Go
+mysterybox := interface{}(10)
+// generic anonymous interface variable declared, 
+// interface contains a value thats an integer, 10
+
+retrievedInt, ok := mysterybox.(int)
+// this is the syntax for type assertion, syntax is:
+// var_with_desired_type , ok := interface_or_variable_with_value_of_desired_type.(desired_type)
+
+```
+
+#### misc interface stuff
+
+- small caps interfaces are private and only accessible in the current module, capitalized interfaces can be accessed outside the module.
+- Interface naming conventions:
+    - if your interface only has 1 method, just name the interface "<method>er" (ie read -> reader, calculateArea-> AreaCalculator)
 ### Channels
 
 ## Misc stuff at runtime
