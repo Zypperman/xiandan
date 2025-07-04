@@ -130,6 +130,8 @@ prmitive types can be found on [Geeks4Geeks](https://www.w3schools.com/java/java
         String z = x + y;  // z will be 1020 (a String)
         ```
 
+- check for equality using `<str_var>.equals(<other_str_var>)`
+
 ### Type conversions
 
 Done with `int value = Integer.valueOf(scanner.nextLine());`
@@ -146,16 +148,34 @@ Division operator works differently depending on the input types:
 ```java
 int firstInt = 3
 int secondInt = 2
-// when output is formatted:
+double firstFloat = 3.0
+double secondFloat = 2.0
 
-// 1. an integer
-int intResult = firstInt / secondInt;
-System.out.println(intResult); // returns 1
+// int / int = int
+int intResultOfInts = firstInt / secondInt;
+System.out.println(intResultOfInts); // returns 1
+double floatResultOfInts = firstInt / secondInt;
+System.out.println(floatResultOfInts); // returns 1 also
+// result from dividing ints 3 and 2 was int 1,
+// then we type casted it into a double.
 
-// 2. a double
-double doubleResult = firstInt / secondInt;
+// when the operation involves a float kind of type, the result is a float.
+double doubleResultOfFloatAndInt = firstInt / secondFloat; // 3/2.0
+System.out.println(doubleResultOfFloatAndInt);             // returns 1.5
+double doubleResultOfIntAndFloat = firstFloat / secondInt; // 3/2.0
+System.out.println(doubleResultOfFloatAndInt);             // returns 1.5
+
+
+// stupid cheese tactic: throw in a float 
+int dividend = 3;
+int divisor = 2;
+
+double result = 1.0 * dividend / divisor;
 System.out.println(result);
+
 ```
+
+So make sure to check the types before the operation is done.
 
 ### <span style='color:red'> Advanced Type conversion (widening / narrowing conversions)</span>
 
@@ -181,7 +201,6 @@ int myInt = (int) myDouble; // Manual casting: double to int
 System.out.println(myDouble);   // Outputs 9.78
 System.out.println(myInt);      // Outputs 9
 ```
-
 
 Here's a chart of the various sizes of data for reference:
 
