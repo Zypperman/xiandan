@@ -81,10 +81,30 @@ commands:
 -`alias` &#8212; set a custom keyword to run a command or a script.
     - usage: `alias [option] [alias]='[command-or-path]'`, but just note its temporary.
 - `>` after a command lets you log the output to a filepath, but will overwrite its contents.
+    - `<` does the opposite and is used when you want to redirect the contents of a file into your output.
 - using `>>` after a command concatonates the output to the end of a filepath.
 - `cut` removes certain sections of each lne in the file, with a `tab` delimiter.
     - option `d` is for using a custom delimiter
     - option `f` is for specifying a column of data to extract from
+- `head` and `tail` &#8212; get the first or last 10 lines of a file, pass the file name as an arg. (ie. `$ head sonnets.txt`)
+- `less` &#8212; call with a file as an arg, gives a ui for reading your text interactively.
+    - `spacebar/CTRL + F/B` to navigate, `q` to quit.
+    - include `/<keyword>` to search for specific words, `n/N` to navigate back and forth, `G/1G` to go back 1 line or to the beginning.
+- `more` &#8212; gives you a ui to work with for viewing large documents.
+
+### intermediate file IO: File perms
+
+#### reading file perms
+
+- use `ls -l <filename>` to read file permissions
+    - formatted as <user_perms><group_perms><other_user_perms>
+    - each perm segment is split into `rwx`: read, write and execute rights. if a perm has `-` for a perm, it means it doesn't have that perm.
+    - you can also represent these states with 0-7, where r=4, w=2 and x=1 and the perm is a computed sum.
+
+- `chmod <perm_pattern> <file>` &#8212; edit file perms.
+    - perm pattern can come in the form of:
+        - for 1 group = `o-w`
+        - for all groups with number notation = `666` (all users have read and write perms)
 
 ## Wildcards (kinda like regex)
 
@@ -94,12 +114,20 @@ commands:
 
 ## Cool shortcuts
 
+- ``
 - `CTRL A` &#8212; jump to start of line
 - `CTRL E` &#8212; jump to end of line
 - `CTRL U` &#8212; delete everything
 - `CTRL D` &#8212; exit terminal and logs out.
 - `CTRL R` &#8212; "reverse search", Recall the last command matching the characters you provide, use again to navigate through the matching commands
 - hold shift for windows, hold option for mac, use mouse to click whatever you want and insert stuff. Release button only after you're done editing.
+
+### (From NUS CS2030s)
+
+- `CTRL D` &#8212; if your program requests for input, use this to denote the end of your input. its also how you exit from a shell (by telling it you don't have any more commands for it)
+- `CTRL Z` &#8212; suspend the current running program. This pauses the execution of the program (but not terminates it). In the bash shell, the most recently suspended program can resume executing in the background with the command `bg` or be brought back to execution in the foreground again with the command `fg`.
+- `CTRL S` &#8212; freeze the terminal.
+- `CTRL Q` &#8212; resumes the terminal.
 
 ## Intermediate features
 
@@ -115,15 +143,10 @@ commands:
         - `!-5` (call the 5th command you last used)
     - [more found here.](https://www.redhat.com/en/blog/bash-bang-commands)
 - `history` &#8212; shows the last few commands called.
-- `head` and `tail` &#8212; get the first or last 10 lines of a file, pass the file name as an arg. (ie. `$ head sonnets.txt`)
-- `less` &#8212; call with a file as an arg, gives a ui for reading your text interactively.
-    - `spacebar/CTRL + F/B` to navigate, `q` to quit.
-    - include `/<keyword>` to search for specific words, `n/N` to navigate back and forth, `G/1G` to go back 1 line or to the beginning.
-
 - `sort` in a file contents, sorts lines in a file by alphanumeric order. (numbers before letters, lower and upper case are mixed ie aAbBcC)
     - indicate option `n` to sort by number.
 
-- uniq &#8212; gets the unique results, and can get basic statistics about it.
+- `uniq` &#8212; gets the unique results, and can get basic statistics about it.
     - option `c` returns each entry with a frequency count.
 
 ### grep (global regular expression print)
@@ -197,6 +220,7 @@ $ for filename in basilisk.dat minotaur.dat unicorn.dat
 
 ## Sources
 
+- <https://explainshell.com/>
 - <https://swcarpentry.github.io/shell-novice/>
 - <https://www.learnenough.com/command-line-tutorial>
     - book recommended by odin proj, its pretty short
