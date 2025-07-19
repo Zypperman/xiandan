@@ -85,6 +85,7 @@ Also just note that source code statements are ended with `;`, same as C and C++
 - if unsure which package you need, just click "all classes" and search from there.
 - each class also has a tab in its docs page called "USE" to see where it exists in other packages.
 - By default, `java.lang` is already imported for you.
+    - meaning packages like `System` and `Math` are already ready for you to use without needing to import them.
 
 ## Variable declaration
 
@@ -131,6 +132,7 @@ prmitive types can be found on [Geeks4Geeks](https://www.w3schools.com/java/java
         ```
 
 - check for equality using `<str_var>.equals(<other_str_var>)`
+    - already returns a boolean so you don't need to assign it to another variable
 
 ### Type conversions
 
@@ -206,6 +208,37 @@ Here's a chart of the various sizes of data for reference:
 
 ![Data type coverage](https://cdn.ttgtmedia.com/rms/onlineImages/server_side-java_primitive_types-f.png)
 
+## Operators
+
+The usual, refer to [G4G](https://www.geeksforgeeks.org/java/operators-in-java/).
+
+Uncommon differences:
+
+- logical operators &#8594; `&&` `||` and `!` for AND OR and NOT respectively;
+- bitwise `>>` vs `>>>`, the difference is just that when dealing with negative integers, you remove the bit that makes it negative, turning it into a huge integer:
+
+    ```Java
+        int signedNum = -8; 
+        // Binary: 11111111 11111111 11111111 11111000
+        int resultUnsigned = signedNum >>> 1;
+        // Result: 2147483644 (Binary: 01111111 11111111 11111111 11111100)
+    ```
+
+## Conditionals
+
+```Java
+// If statements are c-like
+int j = 10;
+if (j == 10) {
+    System.out.println("I get printed");
+} else if (j > 10) {
+    System.out.println("I don't");
+} else {
+    System.out.println("I also don't");
+}
+```
+
+
 ## Loops
 
 ```Java
@@ -223,9 +256,9 @@ for (int i = 0; i < 5; i++) {
 }
 ```
 
-statement 1: initialize variable to be tracked
-statement 2: define break condition based on variable to be tracked, only checked before the iteration is run.
-statement 3: define change condition after each iteration of the loop.
+statement 1: initialize variable to be tracked  
+statement 2: define break condition based on variable to be tracked, only checked before the iteration is run.  
+statement 3: define change condition after each iteration of the loop.  
 
 ## Sources
 
