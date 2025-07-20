@@ -94,12 +94,11 @@ From your repo page, press the green code button to see a few different ways to 
 
 ## Best practices
 
-- make atomic commits &#8212; each commit should be a checkpoint for  each single feature or task in your project. This makes reverting easy since you won't
-- 
+Make atomic commits &#8212; each commit should be a checkpoint for  each single feature or task in your project. This makes reverting features easy since they won't conflict with each other.
 
-### commit message conventions
+### cCmmit message conventions
 
-structure them with:
+structure your commits (within 72 characters) with:
 
 ```txt
 <type>[optional scope]: <description>
@@ -109,7 +108,21 @@ structure them with:
 [optional footer(s)]
 ```
 
-Best to read from the article [conventionalCommits](https://www.conventionalcommits.org/en/v1.0.0/) and this [github cheatsheet](https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13).
+- Type &#8212; categories for your change, from a selection of words (ie. fix, feat, build, chore, ci, docs, style, refactor, test)
+- scope &#8212; a noun describing the context for the change
+    - indicate here whether breaking changes are present with `!` (ie. `feat(api)!: send an email to the customer when a product is shipped`)
+    - otherwise just add it in the footer.
+- description &#8212; written in the imperative (pretend its present tense even though you did it in the past)
+- optional body &#8212; add detail to changes ie reason + implementation quirks, but dont use them unless you need them
+- optional footer &#8212; more for using with an issue tracker, but outlines meta-information like design patterns, breaking changes or mentioning other collaborators.
+
+Best to read from the article [conventionalCommits](https://www.conventionalcommits.org/en/v1.0.0/) and this [github cheatsheet](https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13) (and if that still isn't enough, [this video should help, and even covers how to automate your commits](https://youtu.be/OJqUWvmf4gg?si=tWCoEpu767a99fBa&t=40)).
+
+Conventional Commits is also a good way to:
+
+- compare projects and familiarize yourself with the latest changes (since most of them use the same format ie. Vue, angular)
+- generate test logs since the format is standardised
+- make it easier for collaboration and coming back to after taking a break
 
 ## Sources
 
