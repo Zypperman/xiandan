@@ -3,7 +3,11 @@
 ## Preface
 
 Git is a way to handle version control for code you write.  
-Github is just where you do this with other people, alongside other cool stuff like automated testing that you see with continuous Integration and Development (CI/CD).
+Github is just where you do this with other people, alongside other cool stuff like automated testing that you see with continuous Integration and Development (CI/CD).  
+  
+Each projects is managed with Git by creating a repository, where a hidden `git` folder will be created in your project folder. This folder contains everything it needs for internal tracking and versioning.
+
+This `.git` folder represents the state of your project's version management.
 
 ### Important features
 
@@ -43,7 +47,7 @@ Github is just where you do this with other people, alongside other cool stuff l
 - secure your account with SSH keys
     - SSH &#8212; "Secure Shell" is like a login key that authenticates your machine so you can just work with your repo without needing to relogin all the time. Its a form of asymmetric cryptography where its easy to create a "lock", but not easy to recreate the input parameters for making the lock.
 
-    - just follow the odin project's guide to check if you have an existing SSH key (and generate it if you dont) then link it to your github and check that it works. (all under step 2.)
+    - just follow the [odin project's guide](https://www.theodinproject.com/lessons/foundations-setting-up-git#step-23-create-an-ssh-key) to check if you have an existing SSH key (and generate it if you dont) then link it to your github and check that it works.
 
 ## Git commands and orientation
 
@@ -96,7 +100,7 @@ From your repo page, press the green code button to see a few different ways to 
 
 Make atomic commits &#8212; each commit should be a checkpoint for  each single feature or task in your project. This makes reverting features easy since they won't conflict with each other.
 
-### cCmmit message conventions
+### Commit message conventions
 
 structure your commits (within 72 characters) with:
 

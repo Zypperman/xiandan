@@ -2,9 +2,10 @@
 
 Start with `git <command>`:
 
-### **Basic Commands**  
+## **Basic Commands**  
 
-- `init` – Initialize a new repository.  
+- `init` – Initialize a new repository.
+    - in your current folder, creates all the boilerplate git content under the hidden folder `.git` to start tracking your project.
 - `clone <repo-url>` – Clone a remote repository to your local machine.  
 - `status` – Check the status of your working directory (staged/unstaged changes).  
 - `add <file>` – Stage a file for commit.  
@@ -15,7 +16,7 @@ Start with `git <command>`:
 - `diff` – See unstaged changes.  
 - `diff --staged` – See staged changes.  
 
-### **Branching & Merging**  
+## **Branching & Merging**  
 
 - `branch` – List all branches.  
 - `branch <branch-name>` – Create a new branch.  
@@ -26,7 +27,7 @@ Start with `git <command>`:
 - `branch -d <branch-name>` – Delete a branch (safe, checks merge status).  
 - `branch -D <branch-name>` – Force delete a branch (unmerged changes).  
 
-### **Remote Repositories**  
+## **Remote Repositories**  
 
 - `remote -v` – List remote repositories.  
 - `remote add <name> <url>` – Add a new remote repository.  
@@ -36,7 +37,7 @@ Start with `git <command>`:
 - `push -u origin <branch>` – Push and set upstream branch.  
 - `push --force` – Force push (use with caution).  
 
-### **Undoing Changes**  
+## **Undoing Changes**  
 
 - `reset <file>` – Unstage a file.  
 - `reset --hard` – Discard all local changes (unstaged & staged).  
@@ -45,7 +46,7 @@ Start with `git <command>`:
 - `revert <commit-hash>` – Create a new commit that undoes a previous commit.  
 - `checkout -- <file>` – Discard changes in a file (before staging).  
 
-### **Stashing**  
+## **Stashing**  
 
 - `stash` – Temporarily save uncommitted changes.  
 - `stash list` – List all stashed changes.  
@@ -53,7 +54,7 @@ Start with `git <command>`:
 - `stash pop` – Apply and remove the most recent stash.  
 - `stash drop` – Delete the most recent stash.  
 
-### **Tagging**  
+## **Tagging**  
 
 - `tag` – List all tags.  
 - `tag <tag-name>` – Create a lightweight tag.  
