@@ -146,8 +146,91 @@ For selecting subgroups of elements (including html element types) to style.
     - font-weight &#8212; for visual effects like bold or italics, also takes on numbers
     - text-align
 - `height` and `width` for images &#8212; in `px`, but talso takes on `auto` for proportional size changes.
+    - Alternative rules include (from w3schools):
+    - auto - the browser calculates the margin
+    - length - specifies a margin in px, pt, cm, etc.
+    - % - specifies a margin in % of the width of the containing element
+    - inherit - specifies that the margin should be inherited from the - parent element
+
+---
+
+## Order of applying styles (the C (cascade) of CSS)
+
+- If some graphics don't render right, its because:
+    - your browser cant interpret what you outlined in css and went to its default behaviour and presentation of elements.
+    - some property you used works in an unexpected way.
+    - the order of applying styles was unexpected.
+- An easier way to interpret CSS rules is that each block is a layer, and you're just layering styles over each other in your site.
+
+### Cascading rules
+
+If two styles scripts apply to 1 element at the same level, follow these rules:
+
+1. More specific delarations > less specific declarations
+    - Specificity = number of n level selectors
+    - in-line styles are the most specific (ie `<p style='color:white;'>`)
+    - ID > Class > element type selectors.
+    - if 2 style scripts use the same level of selectors, look at how many they use, using more takes precedence
+        - ie. 1 ID selector < 1 ID + 1 class selector.
+
+    - Note that precedence only needs to apply if there are conflicting declarations.
+    - Combinators also do not contribute to complexity (ie. `*`, `+`, `space` etc)
+
+    ```html
+    <!-- example adapted from Odin project -->
+    <!-- index.html -->
+
+    <div class="main">
+    <div class="list subsection">Red text</div>
+    </div>
+
+    ```
+
+    ```css
+    /* rule 1 */
+    .subsection {
+    color: blue;
+    }
+
+    /* rule 2 */
+    .main .list {
+    color: red; /*applies because more selectors are being used*/
+    }
+    ```
+
+2. Inheritance rules: if Child elements are selected, they don't adopt the parent element's style rules.
+    - ie (taken from odin project):
+
+        ```html
+        <!-- index.html -->
+        <head>
+        <style>
+        #parent {
+        color: red;
+        }
+
+        .child {
+        color: blue;
+        }
+        </style>    
+        </head>
+        <div id="parent"> <!-- becomes red -->
+        <div class="child"></div> <!-- becomes blue since its red was inherited from being under the element with id=parent -->
+        </div>
+        ```
+
+3. If above 2 criteria are contested, just look at which is further down on the style sheet. styles are applied one selector over another down the sheet.
+
+### Other rule precedences
+
+- putting `!important` after a specific rule brings that style to the top layer.
+
 
 ## Sources
 
 - [W3schools | CSS](https://www.w3schools.com/css/) (for reference)
 - Odin project
+  
+### CSS rules
+
+- [wattenberger CSS reference](https://2019.wattenberger.com/blog/css-cascade) | [Kevin Powell, Specificity in depth](https://youtu.be/c0kfcP_nD9E?si=sWQdlKAhKNoVYpEP) | [Keegan's Specificity Calculator](https://specificity.keegan.st/) | [MDN CSS reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference#index)
