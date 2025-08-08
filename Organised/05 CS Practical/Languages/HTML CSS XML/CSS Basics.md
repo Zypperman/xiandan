@@ -225,6 +225,9 @@ If two styles scripts apply to 1 element at the same level, follow these rules:
 
 - putting `!important` after a specific rule brings that style to the top layer.
 
+### Other cool stuff
+
+- you can insert images as style elements (ie for website backgrounds) and link them with `url(<img_link>)`
 
 ## Sources
 

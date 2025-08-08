@@ -53,7 +53,10 @@ Just empty containers that act as hooks for styles
 
 ---
 
-## Centering Content
+## Random post-content tips
+
+- "Normal Flow" &#8212; refers to whether the element is rendered as a block or an inline element. (ie buttons are inline, ie with other content.). [5 min explanation here.](https://youtu.be/nfXRw06FgK8?si=qsaUvPih9YGhbmr-)
+
 
 ## Sources
 
