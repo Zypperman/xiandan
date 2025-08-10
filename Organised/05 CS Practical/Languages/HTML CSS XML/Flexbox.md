@@ -59,6 +59,7 @@ This code takes the 3 divs in the html script, and arranges them horizontally to
 - `align-self` applies alignment only to a single item.
 
 > [!note]
+>
 > - `justify-content` and `align-items` are added to the flex container, not the flex item.
 > - `align-self` is added to the flex items to override the above two flex container rules.
 
@@ -67,7 +68,6 @@ Both the above features are easier to visualise with figma, so I recommend tryin
 ### Spacing content with `Gap`
 
 - specifies the space between flex items.
-
 
 ### Dealing with content overflow with `flex-wrap`
 
@@ -113,6 +113,14 @@ Both the above features are easier to visualise with figma, so I recommend tryin
 > [!warning] Specifying width with flexbox
 >
 > Its possible to set a width for your elements, but flexbox may not respect these values. It will still dynamically fit your browser window.
+
+---
+
+## Exercise pointers
+
+- sometimes you just need to realise that the content size > the container size, and it doesn't overflow by default. the elements don't expand dynamically. It just sucks.
+- sometimes its easier to design flexbox layouts from inside out: start with the elements that definitely need to be flex items and work outwards.
+    - `gap` is useful when you don't have a lot of space, otherwise use `minmax`.
 
 ## Sources
 
