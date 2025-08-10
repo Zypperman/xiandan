@@ -110,9 +110,9 @@ Both the above features are easier to visualise with figma, so I recommend tryin
 
     - random note, `flex: auto` is shorthand for `flex: 1 1 auto`.
 
-> [!warning] Specifying width with flexbox
->
-> Its possible to set a width for your elements, but flexbox may not respect these values. It will still dynamically fit your browser window.
+      > [!warning] Specifying width with flexbox
+      >
+      > Its possible to set a width for your elements, but flexbox may not respect these values. It will still dynamically fit your browser window.
 
 ---
 
