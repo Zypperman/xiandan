@@ -55,6 +55,9 @@ Sources:
     
     ```
 
+    > [!note] Do not indicate the attribute `type="text/javascript"`
+    > its just a html5 standard thing, but this is an unnecessary type to declare for newer browsers since its redundant and assumed.
+
 - External script (s)
 
     link to javascript files using `src` attribute under `script`
@@ -100,7 +103,7 @@ Params: Children, number, region
 
 ---
 
-### 2. **print to console** → `console.log('print_text')`
+### 2. Printing to console → `console.log('print_text')`
 
 - equivalent to `print()` in python, just writes something out in the console when executed.
 - accepts comma separated args and iterables, **concatenates with spaces** and prints them ie `console.log("hi","dingus")` ⇒ console prints > `hi dingus`
@@ -116,6 +119,10 @@ Params: Children, number, region
     - Rule of Thumb: Don’t use non-primitive types for boolean comparisons.
         - confusing when you have 2 arrays that refer to 2 diff entities, but have the same value at each slot.
 
+### 2a. getting user input
+
+- done with `window.prompt()`
+
 ---
 
 ### 3. **Primitive Data Types (`Number, String, Bool, Null, Undefined, Symbol`)**
@@ -126,7 +133,7 @@ JS is dynamically typed, so its ok you can anyhow assign your variables. below a
     - integers → [-2¹⁰²⁴ —  2¹⁰²⁴ ], otherwise you get `infinity`
     - alt: `BigInt` → for integers that are huge and only arbitrary precision is required
 - `String` (ie `'a'`)
-    - wrap with `'` or `"` , no difference
+    - wrap with `'`, `` ` `` or `"` , no difference
 - `Boolean` ⇒ `true` or `false`
 - `undefined` ⇒ by default what type variables are, if nothing’s assigned yet.
     - same with functions if they don’t return anything, ie:
@@ -193,6 +200,25 @@ JS is dynamically typed, so its ok you can anyhow assign your variables. below a
 
 - note that for `null`, `console.log(typeof <var>)` will return `object`. (not as in oh the variable is unitialized, it literally returns that as a string)
 - undefined returns as `undefined`.
+
+### weird interactions between types
+
+(From [Javascript.info](https://javascript.info/operators#string-concatenation-with-binary))
+
+- For strings and the '+' operator, processing occurs from left to right:
+    - printing `2+2+'1'` &#8212; 2 + 2 = 4 first, then concat "1"
+    - printing `'1'+2+2` &#8212; treats '1'+2 as '12' then continues as '122'
+- For other operators, they will convert the result to numbers regardless of the operand type (string or number).
+
+- Unary + and 0: adding a '+' before a non-number converts it into a number:
+    - ie `+true` turns into 1 cuz it sounds true
+    - ie `+""` turns into 0 because it evaluates to false
+    - but if its already a number nothing happens ie. `x=-5;console.log(+x)` returns `-5`
+    - strings that are numbers are turned into numbers ie `x='5'` turns into an integer if you do `+x` (same effect as doing `Number(x)`).
+
+- `++` or `--` before / after the operator
+    - prefix (`++counter`) &#8212; If we’d like to increase a value and immediately use the result of the operator
+    - postfix (`counter++`) &#8212; means when variable is called (or instantaneously called), the value doesn't update until execution goes past that line.
 
 ---
 
@@ -311,11 +337,17 @@ a?.b.c; // evaluate `a` first, then produce `undefined` if `a` is `null` or `und
 
 right side will only be evaluated if left side there are cases that need it.
 
+### 4.c Bitwise Operators
+
+- For operations on binary inputs. Rare, but they exist.
+    - Intro can be found under W3's JS operators under the "JavaScript Bitwise Operators".
+    - Further documentation exists under [W3's docs](https://www.w3schools.com/js/js_bitwise.asp) on JS Bitwise Operations.
+    - just be aware that JS stores its numbers as 64 bit floats, but all bitwise operations are performed on 32 bit binary numbers via conversion,and then converts it back into 64 bit numbers.
+
 ---
 
-## 5. **Variables + naming convention (variables use `let`, constants use `const`, hackers use `var` )**
+## 5. **Variables + naming convention (variables use `let`, constants use `const`, old way of naming variables use `var` )**
 
-- variables ⇒ setting aside memory to create containers, for keeping track of values.
 - Assignment can be done with `let`, `var` or `const`.
     - `let` → standard container creator, you can reassign anytime. Doesn’t allow for hositing.
     - `var` → predecessor of `let`, allows for hoisting, but just use `let` as the default.
@@ -387,6 +419,7 @@ right side will only be evaluated if left side there are cases that need it.
     - property of non-hoistable variables, is that if you try to access it before its declared, it returns ReferenceError.
     - cheem word just to make it sound cool.
 - also note, you cant use let and declare a variablename that already exists.
+- These keywords are also only used once at declaration, you don't need to reassign them.
 
 ### scoping
 
@@ -447,9 +480,11 @@ right side will only be evaluated if left side there are cases that need it.
 
 - [**] NOTE: Template literals are static once declared, so its not like you can update them after declaring them statically.
 
+[Full documentation for strings in MDN found here.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+
 ### String Methods
 
-[**String Methods (referencing how python does it):**](https://www.notion.so/String-Methods-referencing-how-python-does-it-e8fd009208974d93ad7549f3c96f106d?pvs=21)
+[**String Methods (just read from w3schools, its cleaner):**](https://www.w3schools.com/js/js_string_methods.asp)
 
 - note, multiplying strings by integers gives nothing, its not like python.
     - returns Nan, type number. (regardless of which datatype was declared first)
@@ -1882,3 +1917,9 @@ Use VS Code (after just opening a new folder to store everything in)
         ```
 
     - the last thing to note, is that you can just make an array of arrays (nested arrays).
+
+## Sources
+
+- Odin project
+- 30 days of Javascript
+- [Javascript.info](https://javascript.info/)

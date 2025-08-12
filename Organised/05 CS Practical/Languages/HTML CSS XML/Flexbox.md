@@ -51,7 +51,8 @@ This code takes the 3 divs in the html script, and arranges them horizontally to
 - `justify-content` can take values `flex-start`  `flex-end` to stick to the start or end of the main axis.
     - `center` keeps everything to the middle of the main axis
     - `space-between` distributes all items across the main axis
-    - `space-around` is just `space-between` with extra padding at the start and end of the main axis
+    - `space-around` is just `space-between` with extra padding at the start and end of the main axis.
+        - the padding at the start and end are half the size of the between items.
     -`space-evenly` is just `space-around` but all spaces involved are now the same length.
 
 - `align-items` does the same thing as `justify content` except for the cross axis. Above 3 values apply.
@@ -95,7 +96,7 @@ Both the above features are easier to visualise with figma, so I recommend tryin
 
     - `flex-shrink: 1` &#8212; referring to the "shrink factor" of an element
         - if the total size of the items in the container is larger than the container, this decides whether your elements shrink.
-            - setting this to `0` makes it not shrink
+            - setting this to `0` makes it not shrink, good for setting a minimum icon size for dynamic icons.
             - setting to `1` means even shrinking over all elements.
 
     - `flex-basis: 0` &#8212; the intial size of the item, respecting the main axis.
@@ -121,6 +122,14 @@ Both the above features are easier to visualise with figma, so I recommend tryin
 - sometimes you just need to realise that the content size > the container size, and it doesn't overflow by default. the elements don't expand dynamically. It just sucks.
 - sometimes its easier to design flexbox layouts from inside out: start with the elements that definitely need to be flex items and work outwards.
     - `gap` is useful when you don't have a lot of space, otherwise use `minmax`.
+- `max-width` can help you control the size of your elements.
+- Add as few elements as necessary. Don't spam `justify-content` attributes for every container you have.
+- remove bullet points from lists with `list-style-type:none;`
+- remove the underlined part of links with `text-decoration: none;`
+
+### `justify-content`, `justify-items` and `justify self`
+
+Confusing, but just follow this explanation by [W3](https://www.w3.org/TR/css-align-3/#overview).
 
 ## Sources
 
@@ -129,7 +138,10 @@ Both the above features are easier to visualise with figma, so I recommend tryin
 - [Kevin Powell | How Flex basis actually works](https://youtu.be/jx4FtPlDXJg?si=xpdwYREni9H8UAGL)
 - [MDN | Flexbox Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/flex)
 - W3Schools
+- [joshwcomeau | flexbox interactive guide](https://www.joshwcomeau.com/css/interactive-guide-to-flexbox/)
+- 
 
 ### Cheatsheets
 
 - <https://flexbox.malven.co/>
+- <https://css-tricks.com/snippets/css/a-guide-to-flexbox/> for visualising what each relevant flex property does.
