@@ -19,12 +19,14 @@ Sources:
     - open web-inspect console : new tab page → ⋮ (triple-dot) → more tools → developer tools
         - Keyboard shortcuts: (mac, just swap ctrl with command)
 
-        | open Devtools in elements panel | ctrl + shift + C |
+        | open Devtools in elements panel | ctrl + shift + C / F12|
         | --- | --- |
         |  **open Devtools in console panel**  | ctrl + shift + J |
         | opens last-used panel in Devtools | ctrl + shift + I |
         | hard reload together with cache | ctrl + shift + R |
         | (Mobile)Device Mode toggle | ctrl + shift + M |
+
+    - You can also go to the `Sources` panel and select breakpoints (or add the keyword debugger at any point you want the program to stop).
 
 3. VS Code → for development, refer to [VS Code shortcuts](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf)
     - alt + b in vs code to just open html script in browser.
@@ -121,17 +123,29 @@ Params: Children, number, region
 
 ### 2a. getting user input
 
-- done with `window.prompt()`
+- done with `window.prompt()` or just `let varName = prompt(<text>)`
+    - also misc function to note, `parseInt` can be used to make sure your outputs are integers, where you can even specify the input format.
 
 ---
 
-### 3. **Primitive Data Types (`Number, String, Bool, Null, Undefined, Symbol`)**
+### 3. **Primitive Data Types (`Number, Bigint, String, Bool, Null, Undefined, Symbol, object`)**
+
+[Summary of types can be found here on javascript.info](https://javascript.info/types#summary).
 
 JS is dynamically typed, so its ok you can anyhow assign your variables. below are the most common types you need to identify:
 
 - `Number` → integers and Floating point numbers
     - integers → [-2¹⁰²⁴ —  2¹⁰²⁴ ], otherwise you get `infinity`
     - alt: `BigInt` → for integers that are huge and only arbitrary precision is required
+- `Bigint` → for when you don't need floating precision, which restricts your safe range of number storage to $\pm (2^{53}-1)$.
+
+    ```js
+    // the "n" at the end means it's a BigInt
+    const bigInt = 1234567890123456789012345678901234567890n;
+    ```
+
+    Typicall used for cryptography or microsecond-precision timestamps.
+
 - `String` (ie `'a'`)
     - wrap with `'`, `` ` `` or `"` , no difference
 - `Boolean` ⇒ `true` or `false`
@@ -194,7 +208,7 @@ JS is dynamically typed, so its ok you can anyhow assign your variables. below a
     ```
 
     - also throws an exception when converting Symbol to string, unless you use the `.toString()` method.
-- `object` ⇒ created by doing `var = {}`
+- `object` ⇒ created by doing `var = {}`, but basically used to demonstrate OOP principles.
 
 💡 **use `typeof <varname>` to figure out datatypes.**
 
@@ -951,23 +965,117 @@ The web API [`structuredClone()`](https://developer.mozilla.org/en-US/docs/Web/
 3. The values of their properties are deep copies of each other.
 4. Their prototype chains are structurally equivalent.
 
-### 18. Functions 1
+### 18. Functions
 
 - 4 main kinds:
     1. *Declaration*
 
         ```jsx
         //declaring a function without a parameter
-        function functionName() {
+        function functionName(parameters) {
           // code goes here
         }
-        functionName() // called with name and parentheses
+        functionName(argumentss) // called with name and parentheses
         ```
 
     2. *Expression*
     3.
-    4. *Anonymous*
-    5. *Arrow*
+    4. *Anonymous functions* &#8212; functions with no name.
+
+        ```Js
+        (function () {
+        alert("hello");
+        });
+        ```
+
+        - typically used like python lambdas, where you're just lazy to write a simple callback function.
+        - often used when you just need to pass a function as an argument for another function, ie:
+
+        ```js
+        
+        function logKey(event) {
+        console.log(`You pressed "${event.key}".`);
+        }
+
+        textBox.addEventListener("keydown", logKey);
+        // function written as two distinct ones, you call logKey to do stuff
+
+        textBox.addEventListener("keydown", function (event) {
+        console.log(`You pressed "${event.key}".`);
+        });
+
+        // assuming logKey is a simple enough funtion, we can just fit its 
+        // entirety into the addEventListener method in the textbox.
+        ```
+
+    5. *Arrow* &#8212; shortened function syntax.
+
+        ```js
+        // anon func version
+        function (event) {
+            console.log(`You pressed "${event.key}".`);
+        }
+
+        // don't even consider the anon version, just use an arrow
+        (event) => {
+            console.log(`You pressed "${event.key}".`);
+            };
+
+        // if you only need to return a single statment:
+        
+        (x) => (x**2);| // if you just need to square the input, no return statement required
+
+        const squareFn = (x) => (x**2);
+        // property of first class functions, you can assign them to variables.
+
+        ```
+
+        - useful with functions like `map` that apply a function to each element of an iterable:
+
+        ```Js
+        const originals = [1, 2, 3];
+
+        const doubled = originals.map(item => item * 2);
+
+        console.log(doubled); // [2, 4, 6]
+        
+        ```
+
+        - also useful with functions like `reduce`, where you want some result from aggregating the elements of an iterable.
+
+        ```js
+        
+        const array = [1, 2, 3, 4];
+
+        // 0 + 1 + 2 + 3 + 4
+        const initialValue = 0;
+        const sumWithInitial = array.reduce(
+        (accumulator, currentValue) => accumulator + currentValue,
+        initialValue,
+        );
+
+        console.log(sumWithInitial);
+        // Expected output: 10
+        ```
+
+  ### Function Expressions vs Declarations
+
+    Whats the difference between:
+
+    ```js
+    let square = (x) => (x**2); // expression
+
+    function square (x) { // declaration
+    return x**2;
+    }
+    ```
+
+    - Expressions can't be called before they're defined (kinda like JiT execution).
+        - but declared functions can be called before theyre written out.
+    - doing `new square` cannot be done, you can't create new functions
+        - they also do not have a `.prototype` / typical prototype chain to work with
+
+  ### Java Callstack
 
 ### 8a. Arrays - (Non-primitive datatype)
 
@@ -1405,6 +1513,10 @@ for (const num of numbers) {
 // 1 2 3 4 5
 ```
 
+- drop the first statement if you define your counter outside your for loop.
+- drop your second statement if you want the loop to repeat forever, but make sure to add your break.
+- drop your third statement if you want the loop to increment independently (or not at all).
+
 while vs do while loop
 
 - basically, do while will execute its block once before checking the condition, good if you need to ensure min of 1 execution.
@@ -1447,6 +1559,49 @@ for(let i = 0; i <= 8; i++){
 // 0 1 2 3 5 6
 ```
 
+### `for` variants
+
+- for / in &#8212; `for (variable in array) {`  
+    - alternatively, arrays have a `.forEach(callback_func)` method
+        - callbacks take the form of `function myFunction(value, index, array) {`
+
+    ```html
+        <!DOCTYPE html>
+        <html>
+        <body>
+        <h1>JavaScript Arrays</h1>
+        <h2>The forEach() Method</h2>
+        <p>Call a function once for each array element:</p>
+        <p id="demo"></p>
+        <script>
+        const numbers = [45, 4, 9, 16, 25];
+        let txt = "";
+        numbers.forEach(myFunction);
+        document.getElementById("demo").innerHTML = txt;
+        // callback function doesn't need to be defined before it is called
+        function myFunction(value, index, array) {
+        txt += value**2 + "<br>"; 
+        }
+        </script>
+        </body>
+        </html
+    ```
+
+- for / of &#8212; `for (variable of iterable) {`
+
+    ```js
+    let language = "JavaScript";
+
+    let text = "";
+    for (let x of language) {
+    text += x;
+    }
+    ```
+
+- while &#8212; `while (condition) {`
+- do while &#8212; `do { // code block to be executed}; while (condition);`
+    - guarantees a minimum of one execution.
+
 ### 17. Prototype Chains (together with inheritance)
 
 *prototype* — essentially, the core part of inheritance where you use this thing to steal functions from other types, just like how you steal methods via inheritance in OOP.
@@ -1479,15 +1634,9 @@ userTwo.login();
 
 ❗ prototype chains are just the whole of all prototypes where methods are inherited from.
 
-# 30 Days of Javascript
+## Sources
 
-Learning:
-
-## PHANES
-
-[https://github.com/Zypperman/30DJS_Course](https://github.com/Zypperman/30DJS_Course)
-
-[https://github.com/Zypperman/FeetV2/tree/main/JS-learning](https://github.com/Zypperman/FeetV2/tree/main/JS-learning) - progress
+- 30 Days of Javascript
 
 ## Intro
 
