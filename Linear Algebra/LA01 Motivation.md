@@ -32,12 +32,13 @@ Functions &#8212; expressions that are defined with a name
 - ie. $f(x) = ax$
 - Also, it must also fit the criteria of being <u>single-valued</u>
   - every x-value must map to only 1 y value along the acceptable domain of values
+  - However, its ok for multiple inputs to map to the same output. (more than 1 x can map to 1 y, but 1 x cannot map to multiple ys)
   - ie. $f(x)=\sqrt{x}$ is technically not a function because although it is a one to one function, it is not defined for any input values that are less than 0 (so if $Domain_x = \mathbb{R}^+$ )
   - <span style="color:red"> NOTE: functions in this context span over a domain of all real numbers</span>
     - so $f: \mathbb{R} \mapsto \mathbb{R}, x \in \mathbb{R}$
     - "f is a function that maps any number in the set of real numbers, R, to the same set of real numbers R,"
 
-Equations &#8212; when you set two expressions to be equal to each other, or just an assignment
+Equations &#8212; when you set two expressions to be equal to each other as a statement of truth, or just an assignment.
 
 - Between expressions (ie $ax = 0$)
   - Important premise: expression 1 is equal to expression 2, as a statement of truth. This may not always be the case, its just an assumption (see equations with no solution / infinite solutions)
@@ -50,6 +51,9 @@ Transformation &#8212; a mapping of one mathematical entity (ie a number/vector/
 - A more abstract way of looking at functions.
   - ie. $y = f(x)$, x and y are real numbers, but f(x) is the black box itself.
 - in LA, the terms mapping, function and transformation are synonymous
+  - when they say $x \mapsto y$
+  - in this case, you're supposed to sub y = f(x)
+  - if y=mx+b is an equation, you can't swap around and consider the equation when -mx+y=b, thats wrong its an equation.
 - Once again, make sure that all transformations are also single-valued (since in general most of them are formatted as functions ie. $y = \sin^{-1}(x)$ cuz it doesnt extend beyond a domain of 1 and -1)
 
 ## Linearity
@@ -117,6 +121,10 @@ Proof format:
 
 - $f(x) = ||x||$ where x is a vector is also not linear, because scaling it by a negative number can't give you a negative output (ie if your vector values are flipped from (3,4) to (-3,-4) the output of its magnitude as a function cannot change to a negative value so its not linear).
 - all odd roots are functions, but not all even functions are functions.
+- same for modulus operator, good chance its not linear beause multiple input x values can return the same y value, so this expression is not single-valued = the expression cannot be a function.
+- same for norm operator, good chance is not linear.
+  - Norm is written as $\left|\left|\bold{x}\right|\right|$, and is defined as the square root of all its internal components:
+    $$\left|\left|\bold{x}\right|\right| = \sqrt{\sum{a_x^2}}$$
 
 #### 2. Additivity
 
@@ -210,6 +218,11 @@ vectors are just ordered lists of numbers, but for a vector to be considered lin
 
 n in $\mathbb{R}^n$ can refer to any number of dimensions.
 
+> [!tip] Question interpretation
+> y = ax + b, without any context, we don't know whether it is a function or an equation and hence we can't check for it's linearity. So, it will be clearly mentioned in the question whether it is a function or equation and accordingly we proceed to check for linearity.
+>
+> - look for keywords like transformation &#8212; that means its a function
+
 ## Writing y = mx + c in vector form
 
 - refer to LA02 for matrix rules first, but basically from $-mx + y = c$ :
@@ -264,3 +277,12 @@ $$
 
 >[!note]
 > Ultimately, matrices represent a linear transformation between vector spaces, where number of rows matches the input vector, and the number of columns matches the output vector.
+
+---
+
+## Question Grinding
+
+- $x^3 = y^3$ is technically a linear transformation because it implies that x=y is linear.
+- horizontal lines are not really linear transformations because they're undefined in certain areas, so additivity test fails ($f(x + x') = c + c = 2c = 2f(x)$ so gay)
+- Homogenity doesn't apply conversely, just cuz the input scales when the output scales doens't mean the other way around.
+-
