@@ -13,7 +13,27 @@
 
 ## Matrix operations
 
-### matrix dot product
+### Scalar multiplication
+
+- commutative closed operation where you just multiply all elements in the matrix by the scalar used.
+
+$$ 4\bold{A} = 4\begin{pmatrix}
+1 & 2 \\
+3 & 4
+\end{pmatrix} = \begin{pmatrix}
+4 & 8 \\
+12 & 16
+\end{pmatrix} $$
+- They are also associative since you can group the operands in any manner.
+- They are also distributive since you can do $s(A+B) = sA + sB$
+
+### Matrix addition
+
+- commutative closed operation where you just add two matrices of the same size element-wise.
+- They are also associative since you can group the operands in any manner.
+- They are also distributive since you can do $s(A+B) = sA + sB$
+
+### Matrix dot product
 
 - Same as vectors, just multiply each element by the scalar value.
 - Considered a closed operations since they result in a matrix, which is part of the input's set.
@@ -24,6 +44,7 @@
   - given $A \times B$, the number of columns in A must match the number of rows in B.
   - resulting matrix will have dimensions of A's rows and B's columns.
   - TLDR, $A_{m\times n} \times B_{p\times q} = C_{m\times q} \text{where } n=p$
+    - This is known as the **conformance requirement**.
 
 - **Doing it intuitively**
   - put the first matrix to the left, the second matrix on top
@@ -46,44 +67,168 @@
   - Also, $\text{given }AB = AC, B \neq C$
     - counter-example is if A is a null matrix.
 
-### Matrix Transpose
+## More ways to visualise Matrix multiplication (given $A \times B$)
+
+### Column view
+
+- Treat A as a covector of vectors (ie if A is $3\times4$, it is a covector made of 4 vectors in $\mathbb{R}^3$)
+  - if B is just a single vector ie of size $4\times1$, then you can effectively do a calculation like a linear combination:
+    $$A \times B = \begin{pmatrix}C_1&C_2&C_3&C_4\end{pmatrix} \times \begin{pmatrix}S_1\\S_2\\S_3\\S_4\end{pmatrix} \\
+    = S_1(C_1)+S_2(C_2)+S_3(C_3)+S_4(C_4), \text{where } C_n \in \mathbb{R}^3$$
+    - as usual, always double-check that your resultant matrix size makes sense.
+  - if B is a matrix ie. of size $4\times2$:
+    - first partition B into vectors
+    - do the first trick with the first vector of B, and continue rightwards
+    - then just concatonate (not add) the elements together.
+    $$A \times B = \begin{pmatrix}C_1&C_2&C_3&C_4\end{pmatrix} \times \begin{pmatrix}S_1 | W_1\\ S_2 | W_2\\S_3 | W_3\\S_4|W_4\end{pmatrix} \\
+    = \begin{pmatrix}S_1(C_1)+S_2(C_2)+S_3(C_3)+S_4(C_4) &|& W_1(C_1)+W_2(C_2)+W_3(C_3)+W_4(C_4)\end{pmatrix}$$
+
+### Row view
+
+- Given $A \times B$ where A is $1 \times 4$, B is $4 \times 2$, we can treat it like we are doing a linear combination of the covectors in B:
+  $$ \text{ie. given } x^T = \begin{pmatrix}
+1 & 2 & 3 & 4
+\end{pmatrix} , A = \begin{pmatrix}
+4 & 6 \\ 5 & 7 \\
+8 & 9 \\ 1 & 2
+\end{pmatrix}$$
+  we expect the answer to have size $1 \times 2$ and do:
+  $$x^TA = 1r^T_1 + 2r^T_2 +3r^T_3 4r^T_4 \\=
+  1 \begin{pmatrix}
+4 & 6
+\end{pmatrix} + 2 \begin{pmatrix}
+5 & 7
+\end{pmatrix} + 3 \begin{pmatrix}
+8 & 9
+\end{pmatrix} + 4 \begin{pmatrix}
+1 & 2
+\end{pmatrix} \\ = \begin{pmatrix}
+42 & 55
+\end{pmatrix}$$
+  - multiplying on the left is the same as taking linear combos of the rows of the second matrix.
+- if A is more than just a covector (ie a matrix of $2\times 4$) then the same partitioning rule applies, just do for each row.
+
+### Block-wise multiplication
+
+- technically if you're able to partition a matrix into nice blocks, then you can do multiplication block by block
+  - ie given $A \in R^{n\times n}$ and $B \in R^{n\times 2n}$, its valid to do:
+    $$ AB = A \begin{pmatrix} B_1 | B_2\end{pmatrix} = \begin{pmatrix} AB_1 | AB_2\end{pmatrix}$$
+    from there you just work with the partitioned matrices and replace the results with their original positions.
+
+- from there you can also treat A as a vector of covectors, while A is a covector of column vectors, and just operate from there (effectively giving us the normal way of interpreting matrix multiplication.)
+
+### Time-complexity of Matrix multiplication
+
+- The setting is with 2 matrices sized $A \in \mathbb{R}^{m\times k}$ and $B \in \mathbb{R}^{k\times n}$
+- if you were to calculate each element manually and each addition and multiplication is 1 operation, you'd need:
+  - k multiplications and (k-1) additions per element
+  - element wise calculation over mn elements
+  giving us $mn(2k-1) \implies O(mnk)$, and if we deal with square matrices, its $O(n^3)$.
+- The current best algorithm is the Coppersmith–Winograd algorithm with complexity of $O(n^{2.373})$.
+
+## Matrix Transpose
 
 Take the matrix, draw a line from the top left to the bottom right. Flip your matrix accordingly.
 
+- each element's row and column swaps (so $a_{ij}$ becomes $a_{ji}$)
+
+> [!tip] Terminology
+> we don't refer to covectors for now, we just call row vectors transposed vectors.
+
+### Cool properties
+
 - transposing a matrix twice gives you the original matrix.
+  $$(A^T)^T  = A$$
 - transposing the inputs before adding them is the same as adding first then transposing
+  $$(A+B)^T  = A^T+B^T$$
 - scalar multiplication with transposing is commutative (same result regardless of whether you transpose before or after)
+  $$(sA)^T = sA^T$$
+  - wayward logic behind this is that a scalar is its own transpose (swapping the element at 1,1 with itself)
 - matrix multiplication before and after transpose is the same if done together.
+- given x, a vector of size n in the field of real numbers:
+    $$ \text{if } x \in \mathbb{R}^n \implies x^T \in \mathbb{R}^{1 \times n}$$
+- also given the shape of matrices resulting from matrix multiplication:
+    $$  x x^T \in \mathbb{R}, \text{ but } x^Tx \in \mathbb{R}^{n \times n}$$
 
-#### Product rule
+- the dot product of 2 vectors is technically the same as the matrix multiplication of one vector's inverse and the other:
+    $$ a \cdot b = a^T b = b^T a$$
 
-- basically, to get $(AB)^T$, you flip the matrices and transpose both.
+### Product rule
+
+- To get $(AB)^T$, you flip the matrices and transpose both.
   - so $(AB)^T = B^TA^T$
+  - This is because transposing them flips m x k into k x m and vice versa, so you need to flip the matrix order to adhere to the conformance requirement.
+  $$ A \in \mathbb{R}^{m \times k},  B \in \mathbb{R}^{k \times n} \Rightarrow AB \in \mathbb{R}^{m \times n}$$
+  $$ (AB)^T \in \mathbb{R}^{n \times m}$$
+  $$ A^T \in \mathbb{R}^{k \times m},  B \in \mathbb{R}^{n \times k} \Rightarrow B^TA^T \in \mathbb{R}^{m \times n}$$
 
-## Types of matrices
+  also the math works out don't worry about it.
+
+## Types of matrices / Special Matrices
 
 ### Square matrices
 
 - same number of rows and columns.
 - transposing a matrix then multiplying it by itself results in a square matrix.
+  - given A of size m x n, $A^TA$ gives a matrix of size nxn.
+  - $AA^T$ gives a matrix of size mxm.
 
 ### Symmetrical matrices
 
+- the transpose of this matrix is identical to itself. (symmetry about the main diagonal.)
+  - main diagonal &#8212; the line formed by elements where row num = col num (ie elems 1,1 , 2,2 , 3,3 ... form the main diagonal)
 - check whether $(B^TB)^T = (B^T)B$
   - proof for this is just the commutative transpose rule where $(AB)^T = B^TA^T$, sub B for itself and A its transpose
+- By lesson rhetoric, all symmetric matrices need to be square matrices.
+
+#### Skew-symmetric matrices / Antisymmetric matrices
+
+- when your transpose is negative, such that $A = -A^T \Rightarrow A$
+  - this implies that for all elements, $a_{ij} = -a_{ji}$
+
+  ![an example of a antisymmetric matrix ](https://i.sstatic.net/XKGeD.png)
+
+  - usually possible if your main diagonal is made of 0s, and the bottom triangle is a negative reflection of the top triangle.
+
+#### weird thing about symmetry
+
+- Given a square matrix $A \in \mathbb{R}^{n \times n}$:
+  - $A + A^T$ gives a symmetric matrix
+  - $A - A^T$ gives an anti-symmetric matrix
+    - Provable since transposing operands is the same before and after.
+    - $(A - A^T)^T = A^T - A = - (A - A^T)$ so transposing it gives us its negative, QED.
+
+#### Cool thing about Gram Matrices
+
+- The square matrix represented by A^TA is known as a Gram Matrix.
+  - it is symmetric since transposing it returns itself:
+    $$ (A^TA)^T = A^T(A^T)^T = A^T A$$
+    (remember that we use product rule and flip the operands)
+  - Fyi AA^T is also symmetric.
+  - To note, if matrix A has more rows than columns, the gram matrix should be smaller.
+
+- Core purpose of the Gram matrix is as a measure of covariance
+  - known as a covariance matrix (how does data along 1 row dim vary with another col dim)
+  - but this only applies if your matrix is a zero-centered data matrix
+    - zero-centered &#8212; average each column and subtract from each element.
+
+- Application: computing style loss as a loss function for style transfer models ( [simplified](https://www.youtube.com/watch?v=Elxnzxk-AUk&ab_channel=DevelopersHutt) | [technical](https://d2l.ai/chapter_computer-vision/neural-style.html) )
 
 ### Diagonal matrices
 
-Diagonal &#8212; a matrix that has non-zero elements along the main diagonal (which is the top left to bottom right line), and 0 everywhere else.
+Diagonal &#8212; a matrix that has non-zero elements along the main diagonal (which is the top left to bottom right line), and <u>0 everywhere else</u>.
 
 - note, all matrices have a main diagonal, this is not exclusive to square matrices.
   - It just ends where the rows end, and defined as elements where both the indices of the row and column are the same.
-- it is considered symmetric.
+- it is considered symmetric. Anti-symmetric matrices are definitely not diagonal matrices.
+- a zero matrix technically is a diagonal matrix, cuz the requirement is just that non-diagonal elements be 0, the main diagonal can be 0 as well.
+  $$ A = [a_{ij}] \in \mathbb{R}^{m \times n}, a_{i,j} = 0 \space \forall i \neq j$$
 
 ### Identity matrices
 
-- a square diagonalized matrix with only 1 in its main diagonal.
-- returns the same matrix when multiplied by this identity matrix.
+- a square diagonalized matrix with only 1 in its main diagonal, and 0 everywhere else.
+  - denoted $I_n$ for size $\mathbb{R}^{n \times n}$
+- returns the same matrix when multiplied by this identity matrix. ($AI = IA = A$)
 
 ### Triangular matrices
 

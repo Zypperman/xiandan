@@ -194,6 +194,9 @@ $$
 
 - signifies how close in direction (spatially) they are, and is used to calculate document similarity (by embedding information about documents into them. See TF-IDF.)
 
+- dot product is also distributive, meaning the dot product of v1 to v2, is the same as doing a dot product of v2 with the vectors used to make a linear combination resulting in v1.
+  $$\text{given } z = av+bu,\\ z\cdot w = a(v\cdot w) + b(v \cdot w)  $$
+
 #### Alternative interpretation of a dot product: Projection ($\bold{x_1}\cdot \bold{x_2} = \left|\left|x_1\right|\right|\left|\left|x_2\right|\right|cos\theta$)
 
 ![projection](https://o.quizlet.com/eKrelTlQbK5riqoWvRXjig.png)
@@ -211,7 +214,7 @@ $$
 - scaling a vector will cause its norm to scale by the same amount.
   $$\left|\left|sx\right|\right| = \left|s\right|\sqrt{x^2_1+x^2_2+...+x^2_n} = \left|s\right|\left|\left|x\right|\right|$$
 
-#### p-norm
+### p-norm
 
 - The above formula is for the euclidean norm, which is just p-norm where p = 2.
 - The general definition of the p-norm IS
@@ -223,7 +226,15 @@ $$
   - literally summing the magnitude of all your values.
   - lore is that city blocks are squares on the grid and you cant pass through them, so to get from one end of a vector to another you need to go along the lines. This is technically the shortest distance without crossing any squares in the euclidean grid.
 - when p = $\infty$, its known as the max-norm.
-  - theres a proof for this but its significant because it gives you the maximum value that x can adopt.
+  - its significant because it gives you the maximum value that x can adopt.
+
+#### $\infty$-norm proof
+
+- when p = $\infty$, we need to keep in mind $\max(x_i) =  x_m$
+- we can then factor out $\left|x_m\right|^p \sum{\frac{\left|x_i\right|^p}{\left|x_m\right|^p}}$, and because we wrapped the whole thing in a square root of p, we can just straight up factor it out to get:
+  $$ \left|\left|x\right|\right|_\infty = \left|x_m\right| \sqrt[p]{\sum \left|\frac{x_i}{x_m}\right|^p}$$
+- the stuff inside the sum actually tends to 1 as p tends to infinity, and even $sqrt[p]{q}=1$ as p tends to $\infty$ so we end up with:
+  $$ \left|\left|x\right|\right|_\infty = \left|x_m\right|$$
 
 ### Unit vectors ($\hat{\bold{x}} = \frac{\bold{x}}{\left|\left|\bold{x}\right|\right|}$)
 
@@ -255,7 +266,3 @@ Spans can be the same set as a vector space, or a subset of it.
         > IT IS NOT THE SAME AS $\mathbb{R}^2$.  
         > $\mathbb{R}^2$ is not a subset of $\mathbb{R}^3$.
         > you just say it as it is. Even if your span only has dimensions in X and Y plane, its not the same.
-
-
-
-
