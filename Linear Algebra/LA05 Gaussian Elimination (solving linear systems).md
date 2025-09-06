@@ -64,12 +64,13 @@
   - alternatively, you can just plug values back into the system once you  have enough information, you don't need to present it in the form of the augmented matrix's coefficient half being an identity matrix.
 
 - As a pointer, try to get an upper triangular matrix on the coefficient side of the augmented matrix cuz then the equations are formatted for you when you back susbtitute
-    - start with the first column and work leftwwards to get rid of all the coefficients.
+  - start with the first column and work leftwwards to get rid of all the coefficients.
 
 ### RREF in the case of weird solutions ($\infin$ or none)
 
 - ie for infinite solutions like $\begin{pmatrix}1&1&2\\0&0&1\end{pmatrix}$
-    - contradiction will reveal itself where one side isn't equal to another
-    - the system is termed <u>inconsistent</u>.
-    - If a system is inconsistent, it means theres no solution (the equations involved do not graphically intersect at all).
-    - "If we have a row in REF with all zeros on the LHS / coefficient matrix side, and a non-zero value on the RHS / constant side, the system is inconsistent and there is no solution."
+  - contradiction will reveal itself where one side isn't equal to another
+  - the system is termed <u>inconsistent</u>.
+  - If a system is inconsistent, it means theres no solution (the equations involved do not graphically intersect at all).
+  - "If we have a row in REF with all zeros on the LHS / coefficient matrix side, and a non-zero value on the RHS / constant side, the system is inconsistent and there is no solution."
+

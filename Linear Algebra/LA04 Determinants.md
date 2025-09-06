@@ -150,12 +150,61 @@ A \begin{pmatrix} 1 \\ 0 \end{pmatrix} = \begin{pmatrix} a & c \\ b & d \end{pma
     \end{vmatrix}
     $$
     - Also by coincidence, equating one row to 0s makes the determinant 0.
+    - The proof also extends to columns if you transpose the matrix first, then transpose it back.
 - if you add a multiple of a row/column to another row/column, the determinant remains unchanged.
 - if two rows/columns are equal, then your determinant is 0.
 - the determinant of a triangular matrix is just a product of the diagonal elements.
-    - same applies for if its a diagonal matrix.
+  - same applies for if its a diagonal matrix.
 - if the determinant is 0, then the matrix is singular
   - if the determinant is not zero, it is invertible (it has an inverse).
 - the product of the determinant of AB is the same as the product of the component matrices' determinants &#8594; $|AB| = |A||B|$
   - and because of this, the inverse's determinant is just 1 / the original's determinant cuz $A A^{-1} = I$
 - The determinant of the transposed matrix is the same as the original.
+
+## Shortcuts for calculating the Determinant
+
+- Try to get as many 0s in your matrix (or in a single row / column) as possible by:
+  - using row manipulations (since remember that shifting around rows doesn't change the detemrinant) and converting it into an RREF Form (see [LA05](LA05%20Gaussian%20Elimination%20(solving%20linear%20systems).md))
+  - using relevant determinant properties
+
+### Format for using these shortcuts
+
+1. <span style="color:cyan">Write down clearly that we are trying to find the determinant given a matrix:</span>
+
+  $$
+  |A| = \begin{vmatrix}
+  1 &2  &3  \\
+  4 &5  &6  \\
+  7 &8  &9
+  \end{vmatrix}
+  $$
+
+- important because if you write this as a matrix, factoring out scalars means you're factoring them out from all elements of a matrix.
+- Here, we are only factoring out rows from the determinant, despite using the same notation:
+
+  $$\begin{vmatrix}
+  2 & 2  \\
+  3 & 6
+  \end{vmatrix} = 2 \begin{vmatrix}
+  1 & 1  \\
+  3 & 6
+  \end{vmatrix}$$
+
+  This is Ok because factoring out 1 row doesn't change the determinant
+
+  $$\begin{pmatrix}
+  2 & 2  \\
+  3 & 6
+  \end{pmatrix} \neq 2 \begin{pmatrix}
+  1 & 1  \\
+  3 & 6
+  \end{pmatrix}\\
+  = 2 \begin{pmatrix}
+  1 & 1  \\
+  \frac{3}{2} & 3
+  \end{pmatrix}
+  $$
+
+  This is not ok, factoring 1 row is not allowed, only if you factor from all the elements, then the notation makes sense.
+
+2.

@@ -73,27 +73,64 @@ $$ 4\bold{A} = 4\begin{pmatrix}
 
 - Treat A as a covector of vectors (ie if A is $3\times4$, it is a covector made of 4 vectors in $\mathbb{R}^3$)
   - if B is just a single vector ie of size $4\times1$, then you can effectively do a calculation like a linear combination:
-    $$A \times B = \begin{pmatrix}C_1&C_2&C_3&C_4\end{pmatrix} \times \begin{pmatrix}S_1\\S_2\\S_3\\S_4\end{pmatrix} \\
-    = S_1(C_1)+S_2(C_2)+S_3(C_3)+S_4(C_4), \text{where } C_n \in \mathbb{R}^3$$
-    - as usual, always double-check that your resultant matrix size makes sense.
-  - if B is a matrix ie. of size $4\times2$:
+    $$A \times B = \begin{pmatrix}
+    |&|&|&|\\
+    C_1&C_2&C_3&C_4\\
+    |&|&|&|\\
+
+    \end{pmatrix} \times \begin{pmatrix}s_1\\s_2\\s_3\\s_4\end{pmatrix} \\
+    = s_1(C_1)+s_2(C_2)+s_3(C_3)+s_4(C_4), \text{where } C_n \in \mathbb{R}^3$$
+    - as usual, always double-check that your resultant matrix size makes sense. This should give us a matrix of shape $3 \times 1$.
+  - if B is a matrix ie. of size $4\times2$ (or more):
     - first partition B into vectors
     - do the first trick with the first vector of B, and continue rightwards
     - then just concatonate (not add) the elements together.
-    $$A \times B = \begin{pmatrix}C_1&C_2&C_3&C_4\end{pmatrix} \times \begin{pmatrix}S_1 | W_1\\ S_2 | W_2\\S_3 | W_3\\S_4|W_4\end{pmatrix} \\
-    = \begin{pmatrix}S_1(C_1)+S_2(C_2)+S_3(C_3)+S_4(C_4) &|& W_1(C_1)+W_2(C_2)+W_3(C_3)+W_4(C_4)\end{pmatrix}$$
+    $$A \times B = \begin{pmatrix}C_1&C_2&C_3&C_4\end{pmatrix} \times
+
+    \begin{pmatrix}
+|&&|\\
+S&|&W\\
+|&&|\\
+    \end{pmatrix}
+
+    \\=
+
+    \begin{pmatrix}C_1&C_2&C_3&C_4\end{pmatrix} \times
+
+    \begin{bmatrix}\begin{pmatrix}
+    s_1\\
+    s_2\\
+    s_3\\
+    s_4\\
+    \end{pmatrix} & | & \begin{pmatrix}
+    w_1\\
+    w_2\\
+    w_3\\
+    w_4\\
+    \end{pmatrix}\end{bmatrix}
+    \\=
+    \begin{pmatrix}s_1(C_1)+s_2(C_2)+s_3(C_3)+s_4(C_4) &|& w_1(C_1)+w_2(C_2)+w_3(C_3)+w_4(C_4)\end{pmatrix}$$
 
 ### Row view
 
-- Given $A \times B$ where A is $1 \times 4$, B is $4 \times 2$, we can treat it like we are doing a linear combination of the covectors in B:
-  $$ \text{ie. given } x^T = \begin{pmatrix}
-1 & 2 & 3 & 4
-\end{pmatrix} , A = \begin{pmatrix}
-4 & 6 \\ 5 & 7 \\
-8 & 9 \\ 1 & 2
-\end{pmatrix}$$
+- Given $A^TB$ where A is a $4 \times 1$ vector and B is $4 \times 2$, we can treat it like we are doing a linear combination of the covectors in B:
+  $$ \text{ie. given } A^T = \begin{pmatrix}
+    1 & 2 & 3 & 4
+    \end{pmatrix} , B = \begin{pmatrix}
+    4 & 6 \\ 5 & 7 \\
+    8 & 9 \\ 1 & 2
+    \end{pmatrix}=
+
+    \begin{pmatrix}
+    - & R_{B1} & -\\
+    - & R_{B2} & -\\
+    - & R_{B3} & -\\
+    - & R_{B4} & -\\
+    \end{pmatrix}
+
+  $$
   we expect the answer to have size $1 \times 2$ and do:
-  $$x^TA = 1r^T_1 + 2r^T_2 +3r^T_3 4r^T_4 \\=
+  $$A^TB = 1R_{B1} + 2R_{B2} +3R_{B3} 4R_{B4} \\=
   1 \begin{pmatrix}
 4 & 6
 \end{pmatrix} + 2 \begin{pmatrix}
@@ -105,8 +142,36 @@ $$ 4\bold{A} = 4\begin{pmatrix}
 \end{pmatrix} \\ = \begin{pmatrix}
 42 & 55
 \end{pmatrix}$$
-  - multiplying on the left is the same as taking linear combos of the rows of the second matrix.
-- if A is more than just a covector (ie a matrix of $2\times 4$) then the same partitioning rule applies, just do for each row.
+multiplying on the left is the same as taking linear combos of the rows of the second matrix.
+- if A is more than just a covector (ie a matrix of $2\times 4$) then the same partitioning rule applies, just do for each row:
+
+  $$ A = \begin{pmatrix}
+          \frac{\begin{matrix}- & P &-\end{matrix}}
+          {\begin{matrix}- & Q&-\end{matrix}}
+          \end{pmatrix}
+      = \begin{pmatrix}
+          \frac{\begin{matrix}p_1 & p_2 & p_3 & p_4\end{matrix}}
+               {\begin{matrix}q_1 & q_2 & q_3 & q_4\end{matrix}}
+          \end{pmatrix}
+
+    , B = \begin{pmatrix}
+    4 & 6 \\ 5 & 7 \\
+    8 & 9 \\ 1 & 2
+    \end{pmatrix}=
+
+    \begin{pmatrix}
+    - & R_{B1} & -\\
+    - & R_{B2} & -\\
+    - & R_{B3} & -\\
+    - & R_{B4} & -\\
+    \end{pmatrix}
+    \\
+    \\
+    AB = \begin{pmatrix}
+          \frac{\begin{matrix}p_1(R_{B1})+p_2(R_{B2}) +p_3(R_{B3}) + p_4(R_{B4})\end{matrix}}
+               {\begin{matrix}q_1(R_{B1})+q_2(R_{B2}) +q_3(R_{B3}) + q_4(R_{B4})\end{matrix}}
+          \end{pmatrix}
+  $$
 
 ### Block-wise multiplication
 
@@ -116,6 +181,108 @@ $$ 4\bold{A} = 4\begin{pmatrix}
     from there you just work with the partitioned matrices and replace the results with their original positions.
 
 - from there you can also treat A as a vector of covectors, while A is a covector of column vectors, and just operate from there (effectively giving us the normal way of interpreting matrix multiplication.)
+  - basically you can do this:
+    $$
+    B = \begin{bmatrix}b_1 & | & b_2 & | & ... & | & b_n\end{bmatrix}
+
+    $$
+    where you can view B as a covector of vectors with size $k\times1$ and given A with size $m \times k$ and B with size $k \times n$:
+
+    $$
+    AB = \begin{bmatrix}Ab & | & Ab_2 & | & ... & | & Ab_n\end{bmatrix}
+    $$
+
+    And each $Ab_n$ becomes a vector that's of size $m\times1$.
+
+    you can also view A as a vector of covectors:
+
+    $$
+    A =
+    \begin{pmatrix}
+    - & R_{A1} & -\\
+    - & R_{A2} & -\\
+     & ... & \\
+    - & R_{An} & -\\
+    \end{pmatrix}
+    $$
+
+    which ultimately boils down to the default way of doing matrix multiplication as the dot product of 2 partitioned vectors.
+
+### Alternative interpretation ( messy view \*\*)
+
+- recall that dot product multiplication between 2 vectors can be viewed as a matrix multiplication, where for it to be a valid operation, we transpose the left operand vector to get a $1\times1$ matrix:
+  $$
+    A \cdot B = A^TB = \begin{pmatrix}a_x&a_y\end{pmatrix} \begin{pmatrix}b_x\\b_y\end{pmatrix} = a_x b_x + a_y b_y = x,\text{ where }x \in \mathbb{R}^{1\times1}
+  $$
+  However, we can generalize this and view A as a covector of vectors, ie when A is a matrix in the field of $\mathbb{R}^{m\times2}$:
+  $$
+    AB = \begin{pmatrix}|&|\\\hat{a_x}&\hat{a_y}\\|&|\end{pmatrix} \begin{pmatrix}b_x\\b_y\end{pmatrix} = \hat{a_x} b_x + \hat{a_y} b_y = x,\text{ where }x \in \mathbb{R}^{m\times1}
+  $$
+  
+  TLDR, so long as we can fit our partitioned vectors into this "linear-combination format" of matrix nicely (ie axbx is a valid matrix multiplication), we will have results that match and thus find shortcuts for getting our results by computing parts of a matrix at a time.
+
+  For instance, for the above example of $\hat{a_x} b_x + \hat{a_y} b_y$, so long as $\hat{a_x} b_x$ is a valid computation, then this can hold (and in this case, it does since $\hat{a_x} \in \mathbb{R}^{m\times1}, b_x \in \mathbb{R}^{1\times1}$) so it works out.
+
+  Given any 2 matrices, A and B of arbitrary size mxn and nxk, you can expect to have a resultant shape of m x k but you can also partition your matrix into weird blocks, like:
+
+  $$
+  AB =
+  \begin{pmatrix}
+  A_{11}&A_{12}\\
+  A_{21}&A_{32}\\
+  A_{31}&A_{32}\\
+  \end{pmatrix}
+  \begin{pmatrix}
+  B_{11}\\
+  B_{21}
+  \end{pmatrix} =
+
+  \begin{pmatrix}
+  A_{11}B_{11} + A_{12}B_{21}\\
+  A_{21}B_{11} + A_{22}B_{21}\\
+  A_{31}B_{11} + A_{32}B_{21}\\
+  \end{pmatrix}  
+
+  $$
+  
+  so long as:
+  - From a macro view, their shapes conform (where ignoring that we're dealing with partitioned matrices and instead thinking of them as elements), the matrix sizes conform for matrix multiplication (so 3x2 and 2x1 match to give some weird object with size 3x1)
+
+  - their dot products can conform to the proposed shape (ie dot product between two math objects make sense)
+    - ultimately this sorta forms a recursive formula for matrix multiplication
+
+- Most importantly, it really explains how $Ax=b$ works, where you're taking x, made out of the basis vectors, and swapping these basis vectors out for the vectors that the matrix maps to:
+
+  $$
+    Ax = b\\
+    \begin{pmatrix}
+    |&|\\
+    p&q\\
+    |&|\\
+    \end{pmatrix}\begin{pmatrix}
+    x1\\
+    x2\\
+    \end{pmatrix} =\begin{pmatrix}
+    px1+qx2\\
+    \end{pmatrix}x b
+  $$
+
+  - you can also think of x as a linear combination of x = ax+by where x and y are the basis matrices, and we swap them out for p and q.
+  - Row picture is just the transpose case of this calculation where $y^TA^T = b$.
+
+    $$
+    y^TA^T = b\\
+    \begin{pmatrix}
+    y1&y2
+    \end{pmatrix}
+
+    \begin{pmatrix}
+    -&p&-\\
+    -&q&-\\
+    \end{pmatrix} =\begin{pmatrix}
+    y1p+y2q\\
+    \end{pmatrix}= b
+  $$
 
 ### Time-complexity of Matrix multiplication
 
@@ -241,11 +408,11 @@ Diagonal &#8212; a matrix that has non-zero elements along the main diagonal (wh
   \quad \boldsymbol{x} = \begin{bmatrix} x \\ y \\ z \end{bmatrix} = x\hat{i} + y\hat{j} + z\hat{k}
   $$
   where each column represents a single unit vector, and you can represent any vector as a linear combo of the unit vectors.
-    - all vectors are unit length 1
-    - all vectors are orthonormal/perpendicular to each other
-    - dot product for any 2 of these vectors is 0 (they live entirely on diff planes, also cuz they're orthonormal)
-    - the set of these vectors is called an **orthonormal basis vectors**.
-      - The term orthonormal is preferred because abstractly outside of geometric context being perpendicular has no meaning. only the dot product being 0 implies that theyre perpendicular.
+  - all vectors are unit length 1
+  - all vectors are orthonormal/perpendicular to each other
+  - dot product for any 2 of these vectors is 0 (they live entirely on diff planes, also cuz they're orthonormal)
+  - the set of these vectors is called an **orthonormal basis vectors**.
+    - The term orthonormal is preferred because abstractly outside of geometric context being perpendicular has no meaning. only the dot product being 0 implies that theyre perpendicular.
 
 #### abstractly what the identity matrix means (skippable, optional ramble)
 

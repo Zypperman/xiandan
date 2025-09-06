@@ -64,7 +64,7 @@ LHS = (AB - BA)^T \\
     = -(AB - BA) \neq RHS
 $$
 
-b - 
+b -
 
 $$
 LHS = (A^2B^2)^T \\
