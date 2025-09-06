@@ -164,6 +164,8 @@ Take the matrix, draw a line from the top left to the bottom right. Flip your ma
 
   also the math works out don't worry about it.
 
+- also scales such tht $(ABCD)^T = D^TC^TB^TA^T$
+
 ## Types of matrices / Special Matrices
 
 ### Square matrices
@@ -179,7 +181,7 @@ Take the matrix, draw a line from the top left to the bottom right. Flip your ma
   - main diagonal &#8212; the line formed by elements where row num = col num (ie elems 1,1 , 2,2 , 3,3 ... form the main diagonal)
 - check whether $(B^TB)^T = (B^T)B$
   - proof for this is just the commutative transpose rule where $(AB)^T = B^TA^T$, sub B for itself and A its transpose
-- By lesson rhetoric, all symmetric matrices need to be square matrices.
+- because the rows and columns need to match for this to hold, all symmetric matrices need to be square matrices.
 
 #### Skew-symmetric matrices / Antisymmetric matrices
 
@@ -229,10 +231,58 @@ Diagonal &#8212; a matrix that has non-zero elements along the main diagonal (wh
 - a square diagonalized matrix with only 1 in its main diagonal, and 0 everywhere else.
   - denoted $I_n$ for size $\mathbb{R}^{n \times n}$
 - returns the same matrix when multiplied by this identity matrix. ($AI = IA = A$)
+- each column of this matrix is a unit vector, that specifies a direction in the space that they represent.
+- basically, you can do:
+  $$
+  I_3 = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix}
+  \quad \hat{i} = \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}
+  \quad \hat{j} = \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}
+  \quad \hat{k} = \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
+  \quad \boldsymbol{x} = \begin{bmatrix} x \\ y \\ z \end{bmatrix} = x\hat{i} + y\hat{j} + z\hat{k}
+  $$
+  where each column represents a single unit vector, and you can represent any vector as a linear combo of the unit vectors.
+    - all vectors are unit length 1
+    - all vectors are orthonormal/perpendicular to each other
+    - dot product for any 2 of these vectors is 0 (they live entirely on diff planes, also cuz they're orthonormal)
+    - the set of these vectors is called an **orthonormal basis vectors**.
+      - The term orthonormal is preferred because abstractly outside of geometric context being perpendicular has no meaning. only the dot product being 0 implies that theyre perpendicular.
+
+#### abstractly what the identity matrix means (skippable, optional ramble)
+
+- vectors actually do not necessarily have geometric meaning in math, theyr're just objects with some definitions:
+  - can be factored by a scalar value to give another object of the same type
+  - add together to give another object of the same type
+  - have a defined dot product
+- circles back to group theory where you need to have an identity element to be considered a group (among other conditions).
 
 ### Triangular matrices
 
-- When you have a matrix, populate its main diagonal, and either the elements above or below the diagonal <u>are all zero</u>.(named lower and upper triangular matrices respectively).
+- When you have a matrix, and either the elements above or below the main diagonal <u>are all zero</u>.
+  - Upper Triangular matrix - bottom-left triangle is 0
+
+    $$
+    \begin{pmatrix}
+    a_{11} & a_{12} & a_{13} & a_{14} \\
+    0 & a_{22} & a_{23} & a_{24} \\
+    0 & 0 & a_{33} & a_{34} \\
+    0 & 0 & 0 & a_{44}
+    \end{pmatrix}
+    $$
+
+  - Lower Triangular matrix - top right triangle is 0
+
+    $$
+    L = \begin{pmatrix}
+    l_{11} & 0 & 0 & 0 \\
+    l_{21} & l_{22} & 0 & 0 \\
+    l_{31} & l_{32} & l_{33} & 0 \\
+    l_{41} & l_{42} & l_{43} & l_{44}
+    \end{pmatrix}
+    $$
+
+- denoted (for upper triangular) $\bold{U} = \begin{pmatrix}u_{ij}\end{pmatrix} \in \mathbb{R}^{m \times n} \text{ if } u_{ij}=0 \text{ for } i>j$
+  - if the row index is larger than the col index for an element, it is 0.
+  - Lower triangular is just denoted by $\bold{L}$.
 - Anyway, Diagonal matrices are both upper and loewr triangular matrices.
 
 ---
@@ -376,8 +426,28 @@ $$
 
 If B is the inverse of A, where $AB=I$.
 
+- Inverses are only defined for square matrices.
 - denoted as $A^{-1}$
 - $AA^{-1} = A^{-1}A = I$.
+
+### significance of inverses
+
+- good for manipulating Ax=b
+  - you can directly find x by doing $x = \frac{b}{A} = A^{-1}b$
+    - logic is that you multiply the left side of both equations with $A^{-1}$ so:
+    $$A\bar{x} = \bar{b}$$
+    $$A^{-1}A\bar{x} = A^{-1}\bar{b}$$
+    because $AA^{-1} = A^{-1}A = I$,
+    $$\bold{I}\bar{x} = A^{-1}\bar{b}$$
+    $$\bar{x} = A^{-1}\bar{b}$$
+
+    but because matrix multiplication is not commutative, the $A^{-1}$ needs to be on the right, so we write it as:
+
+    $$\bar{x} = A\backslash \bar{b}$$
+  But note this notation doesn't work if:
+  - A = 0
+  - A is not a square matrix
+  - A doesn't have an inverse (it is singular)
 
 ### Caclulating inverse for a 2x2 matrix
 
@@ -400,3 +470,5 @@ If B is the inverse of A, where $AB=I$.
 3. multiply both sides of your matrix by this inverse (add to the front)
 4. essentially just compute $A^{-1}b$ to get vector $x$
 5. associate values with each dimension of vector $x$.
+
+## Singular Matrices

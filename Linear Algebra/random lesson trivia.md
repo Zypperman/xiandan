@@ -91,3 +91,94 @@ $$
 - for expanding the equation $\left|\left|(\bar{a}+\bar{b})\right|\right|^2$:
   - we can factor it as $(a + b) \cdot (a-b) = a\cdot a + a \cdot b + b\cdot a + b \cdot b$ with all of them as vectors
   - we end up with $2(a\cdot b)$ that needs to be 0 for them to be equivalent.
+
+---
+
+## Week 3
+
+- following the rule that the determinant scales the same amt if you scale one row / col by a number, you can pull factors:
+
+  $$
+  \left|\begin{pmatrix}
+  5 & -5 & 5 \\
+  1 & 3 & 4 \\
+  2 & 7 & 6
+  \end{pmatrix}\right| = 5 \left|\begin{pmatrix}
+  1 & -1 & 1 \\
+  1 & 3 & 4 \\
+  2 & 7 & 6
+  \end{pmatrix}\right|$$
+  here we factored our the first row by doing $R_1 \rightarrow 5R_4$
+
+- try to find common sums when you have a matrix of mostly the same value of n (like the identity matrix).
+
+- Qn 25: you can factor out each row and write that:
+
+$$|-A| = (-1)^n |A|$$
+
+so if n is even, its always 1, if its odd its always -1.
+
+Traditional proof:
+
+- define skew symmetric matrices, that their transpose is the negative version of themselves
+  - therefore $A^T = -A$
+- from properties of determinants, the transpose and the original will have the same determinant
+  - $|A| = |A^T|$
+- sub definition in
+  - $|A| = |-A|$
+- scaling A by s will cause the determinant to be scaled by $s^n$ (where n is the num of rows) so:
+  - $|A| = (-1)^n|A|$
+- see above, that means if n is odd you'll always have the negative version of your original determinant, QED.
+
+## determinant property
+
+- you can only split 1 row or 1 col at a time.
+
+- so for you cant do:
+
+    $$
+    \left|\begin{pmatrix}
+      a +a' & b+b'  \\
+      c+c' &  d+d'
+      \end{pmatrix}\right| \neq
+
+      \left|\begin{pmatrix}
+      a & b  \\
+      c & d
+      \end{pmatrix}\right| + \left|\begin{pmatrix}
+      a' & b'  \\
+      c'&d'
+      \end{pmatrix}\right|
+    $$
+
+but you split by row by row:
+
+  $$
+  \left|\begin{pmatrix}
+  a +a' & b+b'  \\
+  c+c' &  d+d'
+  \end{pmatrix}\right| =
+
+  \left|\begin{pmatrix}
+  a & b  \\
+  c+c' & d+d'
+  \end{pmatrix}\right| + \left|\begin{pmatrix}
+  a' & b'  \\
+  c+c' & d+d'  
+  \end{pmatrix}\right| \\
+  =
+  \left|\begin{pmatrix}
+  a & b  \\
+  c & d
+  \end{pmatrix}\right| + \left|\begin{pmatrix}
+  a & b  \\
+  c' & d'  
+  \end{pmatrix}\right| + \left|\begin{pmatrix}
+  a' & b'  \\
+  c & d
+  \end{pmatrix}\right| + \left|\begin{pmatrix}
+  a' & b'  \\
+  c' & d'  
+  \end{pmatrix}\right|
+
+  $$
