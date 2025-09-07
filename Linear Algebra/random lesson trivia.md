@@ -1,8 +1,12 @@
-ask about haskell program for binomial tree for option pricing
+# Random lesson Trivia
+
+- ask about haskell program for binomial tree for option pricing
 
 ---
 
-# Admin
+## Week 1
+
+### Admin
 
 - pop quizzes every lesson for the current week's topic
 - assignments are in-class cuz gpt
@@ -19,7 +23,7 @@ The other textbook is more advanced and in-depth with applications
 - practice with practice quiz, presented qns are a subset.  
 - sagemath builds on some mojhitop alg for solving equations symbolically
 
-## Notation issue
+### Notation issue
 
 - for matrices, ordering is impotant for proper multiplication.
 - however, putting one inverse matrix in front of the other is weird ie. $A^{-1}\bar{B}$
@@ -130,7 +134,7 @@ Traditional proof:
   - $|A| = (-1)^n|A|$
 - see above, that means if n is odd you'll always have the negative version of your original determinant, QED.
 
-## determinant property
+### Determinant property
 
 - you can only split 1 row or 1 col at a time.
 
@@ -153,32 +157,59 @@ Traditional proof:
 
 but you split by row by row:
 
-  $$
-  \left|\begin{pmatrix}
-  a +a' & b+b'  \\
-  c+c' &  d+d'
-  \end{pmatrix}\right| =
+$$
+\left|\begin{pmatrix}
+a +a' & b+b'  \\
+c+c' &  d+d'
+\end{pmatrix}\right| =
 
-  \left|\begin{pmatrix}
-  a & b  \\
-  c+c' & d+d'
-  \end{pmatrix}\right| + \left|\begin{pmatrix}
-  a' & b'  \\
-  c+c' & d+d'  
-  \end{pmatrix}\right| \\
-  =
-  \left|\begin{pmatrix}
-  a & b  \\
-  c & d
-  \end{pmatrix}\right| + \left|\begin{pmatrix}
-  a & b  \\
-  c' & d'  
-  \end{pmatrix}\right| + \left|\begin{pmatrix}
-  a' & b'  \\
-  c & d
-  \end{pmatrix}\right| + \left|\begin{pmatrix}
-  a' & b'  \\
-  c' & d'  
-  \end{pmatrix}\right|
+\left|\begin{pmatrix}
+a & b  \\
+c+c' & d+d'
+\end{pmatrix}\right| + \left|\begin{pmatrix}
+a' & b'  \\
+c+c' & d+d'  
+\end{pmatrix}\right| \\
+=
+\left|\begin{pmatrix}
+a & b  \\
+c & d
+\end{pmatrix}\right| + \left|\begin{pmatrix}
+a & b  \\
+c' & d'  
+\end{pmatrix}\right| + \left|\begin{pmatrix}
+a' & b'  \\
+c & d
+\end{pmatrix}\right| + \left|\begin{pmatrix}
+a' & b'  \\
+c' & d'  
+\end{pmatrix}\right|
 
-  $$
+$$
+
+---
+
+## Week 4 (solving linear equations)
+
+### Basic solutions overview
+
+| | Equations | Solutions | Comments |
+| :--- | :--- | :--- | :--- |
+| 1 | $x+y=5 \\ x-y=1$ | $x=3, y=2$ | Unique solution |
+| 2 | $x+y=5$ | $x=t \\ y=5-t$ | Infinite number of solutions, Only one equation |
+| 3 | $x+y=5 \\ 2x+2y=10$ | $x=t \\ y=5-t$ | Infinite number of solutions, really, only one equation |
+| 4 | $x+y=5 \\ x+y=6$ | - | No solutions, Inconsistent equations |
+| 5 | $x+y=5 \\ x-y=1 \\ 3x-y=7$ | $x=3, y=2$ | Unique solution, really only two equations |
+| 6 | $x+y=5 \\ x-y=1 \\ 3x-y=9$ | - | No solutions Inconsistent equations |  
+
+### Basic dimensions overview
+
+| Equations | A line ($\mathbb{R}^2$) | A plane ($\mathbb{R}^3$) | An subspace ($\mathbb{R}^n$) |
+| :--- | :--- | :--- | :--- |
+| **One equation** | A line, Infinite solutions | A plane, Infinite solutions | An subspace, Infinite solutions |
+| **Two independent and consistent equations** | A point of intersection, Unique solution | A line of intersection, Infinite solution | An subspace, Infinite solutions |
+| **3 independent and consistent equations** | Cannot happen | A point of intersection, Unique solution | An subspace, Infinite solutions |
+| **independent and consistent equations** | Cannot happen | Cannot happen | A point of intersection, Unique solution |
+| **Two independent but inconsistent equations** | Parallel lines, No solutions | Parallel planes, No solutions | Parallel subspaces, No solutions |
+| **3 independent but inconsistent equations** | Lines that make, $\equiv, \neq, \Delta$ No solutions | Planes making $\equiv, \neq, \Delta$, in cross section, No solutions | Hard to visualize, No common intersection, No solutions |
+| **independent but inconsistent equations** | Lines that make $\equiv, \neq, \Delta$, No solutions | Planes making $\equiv, \neq, \Delta$, in cross section, No solutions | Hard to visualize, No common intersection, No solutions |

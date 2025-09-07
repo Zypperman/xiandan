@@ -4,7 +4,7 @@ Abstractly, it hold as much info about a matrix as possible.
 
 - Can be described as a function of the elements of a matrix.
 
-### 2x2 determinant formula
+## 2x2 determinant formula
 
 ![2x2 det formula](https://graphicmaths.com/img/pure/matrices/determinants/det-2-2.png)
 
@@ -207,4 +207,52 @@ A \begin{pmatrix} 1 \\ 0 \end{pmatrix} = \begin{pmatrix} a & c \\ b & d \end{pma
 
   This is not ok, factoring 1 row is not allowed, only if you factor from all the elements, then the notation makes sense.
 
-2.
+2. Perform some row operations to simplify the matrix
+
+  $$
+  r2 \leftarrow r2 - r1
+  \\
+  \begin{vmatrix}
+  1 &2  &3  \\
+  4 &5  &6  \\
+  7 &8  &9
+  \end{vmatrix}
+  \rightarrow
+  \begin{vmatrix}
+  1 &2  &3  \\
+  4-1=3 &5-2=3  &6-3=3  \\
+  7 &8  &9
+  \end{vmatrix}\\\space\\
+  r3 \leftarrow r3 - r1
+  \\
+  \begin{vmatrix}
+  1 &2  &3  \\
+  3 &3  &3  \\
+  7 &8  &9
+  \end{vmatrix}
+  \rightarrow
+  \begin{vmatrix}
+  1 &2  &3  \\
+  3 &3  &3  \\
+  7-1=6 &8-2=6  &9-3=6
+  \end{vmatrix}\\\space\\
+  r3 \leftarrow r3 - 2r2
+  \\
+  \begin{vmatrix}
+  1 &2  &3  \\
+  3 &3  &3  \\
+  7 &8  &9
+  \end{vmatrix}
+  \rightarrow
+  \begin{vmatrix}
+  1 &2  &3  \\
+  3 &3  &3  \\
+  6-2(3)=0 &6-2(3)=0&6-2(3)=0
+  \end{vmatrix}\\
+  
+  $$
+
+  and by quick observation, we can tell that all the minors will be 0, cuz all of the submatrices have a 0 in them, so that means $|A| = 0$.
+
+- This proof also conveniently shows why if you have rows that are multiples of each other, the determinant is automatically 0. (you can just scale one by the other and subtract to get a row of 0s &#8594; giving you det(A)=0)
+  - so long as some row operation exists to make all the elements of 1 row into a multiple of another row, your determinant will thus be 0.
