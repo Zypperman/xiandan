@@ -264,7 +264,7 @@ multiplying on the left is the same as taking linear combos of the rows of the s
     x2\\
     \end{pmatrix} =\begin{pmatrix}
     px1+qx2\\
-    \end{pmatrix}x b
+    \end{pmatrix}
   $$
 
   - you can also think of x as a linear combination of x = ax+by where x and y are the basis matrices, and we swap them out for p and q.
