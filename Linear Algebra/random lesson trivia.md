@@ -213,3 +213,48 @@ $$
 | **Two independent but inconsistent equations** | Parallel lines, No solutions | Parallel planes, No solutions | Parallel subspaces, No solutions |
 | **3 independent but inconsistent equations** | Lines that make, $\equiv, \neq, \Delta$ No solutions | Planes making $\equiv, \neq, \Delta$, in cross section, No solutions | Hard to visualize, No common intersection, No solutions |
 | **independent but inconsistent equations** | Lines that make $\equiv, \neq, \Delta$, No solutions | Planes making $\equiv, \neq, \Delta$, in cross section, No solutions | Hard to visualize, No common intersection, No solutions |
+
+---
+
+## Week 4
+
+you can RREF to get:
+
+$$
+\begin{bmatrix}
+a&...&...&...&|&d\\
+0&b&...&...&|&e\\
+0&0&c&...&|&f\\
+0&0&0&0&|&g\\
+\end{bmatrix}
+$$
+
+- if g is 0 the system is consistent, otherwise its inconsistent
+- REF form also already tells you how many variables there are from the pivots you have. if you have less pivots than numbers, you don't have enough variables. and your system is linearly independence is not realted, its just whether 1 row can be a multiple of another.
+
+the rank of your REF can look like:
+
+$$
+\begin{bmatrix}
+a&b&c&|&d\\
+0&0&0&|&e\\
+\end{bmatrix}
+$$
+
+the rank of the coefficient matrix is smaller than the rank of the augmented matrix. This scenario just means your system is inconsistent.
+
+Checklist:
+
+1. is rank of the augmented matrix the same as the coefficient matrix?
+
+    - if yes, the system is consistent.
+    - if no, the system is inconsistent.(additional rank on last row of Aug means 0 variables = constant, kinda not what we want)
+
+2. is the rank equal to the number of variables?
+
+    - if yes, the system has 1 unique sol
+    - if less, the system has infinite sol
+
+Singular matrices mean the determinant is 0
+- if thats the case, it means after LU decomp your U determinant is 0
+- so that means that 

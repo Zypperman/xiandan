@@ -1,9 +1,9 @@
 # Matrix Rank in Depth
 
-- recall that rank = number of pivots after converting a matrix to RREF form.
+- recall that rank = number of pivots after converting a matrix to REF form.
   - full rows of 0s do not have pivots
     - this only happens if 1 row is a multiple of another row.
-  - so if you RREF and get a matrix that has a row of 0s, it is rank-deficient.
+  - so if you REF and get a matrix that has a row of 0s, it is rank-deficient.
 - Another perspective is that <span style="color:cyan">rank refers to the number of linearly independent rows in a matrix</span>.
 - Also applies to columns, so we refer to it as:
   - row-rank: number of LI rows
@@ -45,19 +45,4 @@ For any 2 matrices of the same size:
 
 - Matrices can be rank-deficient by n-r (smaller side of rows/cols - current rank)
 
-## Gauss-Jordan elimination
 
-Now instead of just the usual EROs, you also include back-substitution as an ERO.
-
-This inclusion makes Gauss-Jordan elimination.
-
-So just do the EROs until you end up with a strictly diagonal matrix, which usually looks like:
-
-- making all the pivots equal to 1
-- subtracting the lower rows from top rows to make all elements above the main diagonal 0
-- you're left with an identity matrix in the coefficient part of your augmented matrix and some constants, ie:
-  $$
-
-    \begin{bmatrix}1&0&0\\0&1&0\\ 0&0&1\\\end{bmatrix}
-
-  $$
