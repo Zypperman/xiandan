@@ -2,13 +2,14 @@
 
 > [!Note] Wow this is a horribly explained concept
 > Ok so most sources out there really suck at explaining this. I hope this gets refined and polished in the future, but for now I'll try explaining it as best as I can.
-  
+>
 > [!tip] TLDR:
 >Its a way to organise your code so if you need some block of code to be legible, you don't physically repeat the check, you put your variable in a container and functions operate on that container, and the check is done automatically in the container before each new function is applied.
 >
 > Ultimately, instead of writing the check function multiple times, the container runs it for you so you only write the check function once, at the cost of abstracting more.
 >
-> This makes your code cleaner and easier to maintain, ie if you now wanna add debugging to that variable, you don't need to adjust every function handling it, you only add it to the container
+> This makes your code cleaner and easier to maintain, ie if you now wanna add debugging to that variable, you don't need to adjust every function handling it, you only add it to the container class.
+
 ## Thinking about everything as a type
 
 We are used to primitive datatypes like:

@@ -33,6 +33,16 @@
 
 - table &#8212; displays array-like objects in a table.
 
+---
+
+## Importing packages... or require???
+
+- require is native to Node.js, and you basically use it for your backend.
+- import is technically more resource-efficient since it lets you decide what parts of a package to import as opposed to the entire thing.
+    - also it is an asynchronous process while `require` is a synchronous one so there will be improvements to latency.
+
+- [Just read this, the comments are pretty good.](https://stackoverflow.com/questions/46677752/the-difference-between-requirex-and-import-x)
+
 ## Sources
 
 - [Wes Bos | Chrome dev tool tricks](https://youtu.be/xkzDaKwinA8?si=yzvkN1Ea_cw4XBzo)

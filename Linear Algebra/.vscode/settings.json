@@ -1,0 +1,10 @@
+{
+	"markdownlint.config": {
+		"MD003": { "style": "atx" },
+		"MD007": { "indent": 4 },
+		"no-hard-tabs": false
+	},
+	"prettier.tabWidth": 4,
+	"prettier.useEditorConfig": false,
+	"prettier.useTabs": false
+}

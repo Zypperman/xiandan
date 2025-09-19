@@ -166,6 +166,8 @@ commands:
 
     - The W way of doing stuff: letting linux handle it with pipes and work on the buffer with `$ head sonnets.txt | wc`
 
+- note, if you just want to call commands that aren't related to each other, just do `cmd1 ; cmd2`.
+
 ---
 
 - `ps aux` &#8212; see all processes running on your system ("process status")
