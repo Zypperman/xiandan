@@ -1,13 +1,38 @@
-# Todo 14-Sep-2025
+# Todo 22-Sep-2025
 
-- W5
-  - [ ] Gauss-Jordan Elimination
-  - [ ] Matrix Inverses
-  - [ ] Cramer's Rule
-  - [ ] Planes in R4
-  - [ ] Shapes RREF Solvability
-
-- W6
-  - [ ] Review of Linear Combinations and Linear Independence
-  - [ ] Vector Spaces, Subspaces, Bases and Dimension
-  - [ ] Orthogonal Vectors and Subspaces- [ ] Geometry of Linear Equations
+- W7
+  - Components of a vector, change of basis
+  - Orthogonality and projection
+  - Gram-schmidt orthogonalization
+  - Rotation matrices
+- W9
+  - Geometry of Ax=b and column space
+  - Computing Column space
+  - Homogeneous Equation Ax = 0 and Null Space and Row Space
+  - Four Fundamental spaces
+- W10
+  - Matrix Space through Examples
+  - Projection Revisited
+  - Projection Matrix and its properties
+  - projecting to a subspace
+- W11
+  - Solving unsolvable systems of Ax=b
+  - Linear regression
+  - Eigenvectors and eigenvalues
+  - Eigen Analysis: Computing eigen stuffs
+- W12
+  - Eigenvalue and eigenvector properties
+  - motivation for eigenanalysis
+  - Powers of matrices, fibbonaci series
+  - Special matrices and spectral theorem
+- W13
+  - Markov matrices and steady states
+  - positive definite matrices
+  - gram matrices
+  - matrix similarity and the Jordan normal forms
+  - Algorithms with LA
+  - SVD vs EVD
+  - SVD's Mechanisms
+  - Computing SVD
+  - Data compression and PCA
+  - Pseudo inverses and the symmetry of linearity
