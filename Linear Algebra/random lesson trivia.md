@@ -256,5 +256,15 @@ Checklist:
     - if less, the system has infinite sol
 
 Singular matrices mean the determinant is 0
+
 - if thats the case, it means after LU decomp your U determinant is 0
-- so that means that 
+
+---
+
+## Week 6
+
+- intersection between 2 orthogonal subspaces, is the null vector.
+- when proving subspaces:
+  - check if you can formulate a sample vector
+  - check whether scaling it doesn't give you a vector in the subspace
+  - check whether addition doesn't give you a vector in the subspace

@@ -638,4 +638,20 @@ If B is the inverse of A, where $AB=I$.
 4. essentially just compute $A^{-1}b$ to get vector $x$
 5. associate values with each dimension of vector $x$.
 
-## Singular Matrices
+---
+
+## Trace of a matrix
+
+- The sum of the diagonal elements.
+  - makes more sense when you deal with eigenstuff, its basically the sum of its eigenvalues.
+- **Linearity**: For matrices A and B and a scalar c:
+  - tr(A + B) = tr(A) + tr(B)
+  - tr(cA) = c ⋅ tr(A)
+  - tr(AB) = tr(BA) for matrices A and B where the products are defined.
+
+### Trace usefulness
+
+- Trace is invariant like the determinant, except now its over the elements of the diagonal.
+- it also doesn't change when you change your basis, or when you transpose your matrix.
+- that and it has a lot of nice properties.
+- [sauce here](https://math.stackexchange.com/questions/4453933/why-is-the-trace-of-a-matrix-important).

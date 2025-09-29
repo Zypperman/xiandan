@@ -1,12 +1,18 @@
 # Todo 22-Sep-2025
 
+## Urgent
+
 - W7
-  - Components of a vector, change of basis
-  - Orthogonality and projection
-  - Gram-schmidt orthogonalization
   - Rotation matrices
 - W9
   - Geometry of Ax=b and column space
+
+- Practice for Midterms
+- do up essay report
+
+## Less Urgent
+
+- W9
   - Computing Column space
   - Homogeneous Equation Ax = 0 and Null Space and Row Space
   - Four Fundamental spaces

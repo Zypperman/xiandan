@@ -41,7 +41,7 @@
   - a set of vectors that all have the same span (so $\mathbb{R}$ in $\mathbb{R}^2$)
   - a set of vectors that all have the same span (so $\mathbb{R}^2$ in $\mathbb{R}^3$)
 
-## Repressenting our spaces with Basis and Basis vectors
+## Representing our spaces with Basis and Basis vectors
 
 - Basis: The minimum set of vectors to span a space / subspace.
   - ie the basis of a vector space $\mathbb{R}^3$ needs to be represented by min 3 vectors.
@@ -70,8 +70,9 @@
 - Additionally, if:
   - each vector has a unit length of 1
   - each vector is perpendicular / orthogonal to each other
-    - basically their dot products are 0.
-  we call them unit vectors.
+    - basically their dot products are 0.  
+
+  we call it an orthonormal basis.
 
 ### Orthogonality
 
@@ -370,8 +371,103 @@ For more lore, see what the [kronecker delta](https://en.wikipedia.org/wiki/Kron
   A[c]_A = I[x]_I = x \implies [c]_{A} = A^{-1}x
   $$
 
+  the first line is saying "for a vector x, I can represent them as a linear combination of the columns in basis matrix A, where each scalar component is $x_{i|A}$"
+
   the second line is just saying that "I want to find the components of c to construct x using the column vectors in A, and I know that it is equal to the way x is currently written, which uses an orthonormal basis."
 
+- we denote x in these new bases as $[x]_{\text{basis matrix}}$ like $[x]_I$ or $[x]_{A'}$.
+
 - Conveniently, since A is made of n linearly independent column vectors, it is considered full rank and invertible. so we will always have a solution.
+  - This solution is also considered unique, but you will have different combinations for different bases.
 
 For a subspace, you only need as many components as the dimension of the subspace.
+
+### Change of basis with a tall matrix
+
+- what if $A[x]_A = x$ but A is a tall matrix?
+  - we use its left inverse, and apply it to both sides of the equation.
+    $$A^{-1}_{Left}A [x]_A = A^{-1}_{Left}x $$
+    - however, we need A to be full rank.
+    - A's left inverse comes rom $A^TA$, basically each element needs to be a super long computation.
+
+#### Example of tall matric COB
+
+$$
+A = \begin{bmatrix}
+2&1\\
+1&1\\
+1&0\\
+\end{bmatrix},
+x = \begin{bmatrix}
+  7\\5\\2
+\end{bmatrix}
+$$
+
+1. Get left inverse of A which is $(A^TA)^{-1}A^T$: (remember its the one that gives you a smaller matrix)
+
+  $$
+    A^{-1}_{Left} = A^TA =
+    \begin{bmatrix}
+  2&1&1\\
+  1&1&0\\
+  \end{bmatrix}
+  \begin{bmatrix}
+  2&1\\
+  1&1\\
+  1&0\\
+  \end{bmatrix}
+  = \begin{bmatrix}
+    6 &3 \\
+    3 &2
+  \end{bmatrix}
+  \\\space\\
+  \text{This is convenient to inverse since its a 2 }\times\text{2:}
+  \\\space\\
+  (A^TA)^{-1} = \begin{bmatrix}
+    2&-3\\
+    -3&6
+  \end{bmatrix} \times (\frac{1}{(2)(6) - (-3)(-3)})
+  = (\frac{1}{3})\begin{bmatrix}
+    2&-3\\
+    -3&6
+  \end{bmatrix}
+  \\\space\\
+  \therefore (A^TA)^{-1}A^T = (\frac{1}{3})\begin{bmatrix}
+    2&-3\\
+    -3&6
+  \end{bmatrix}\begin{bmatrix}
+  2&1&1\\
+  1&1&0\\
+  \end{bmatrix} = \begin{bmatrix}
+    \frac{1}{3}&-\frac{1}{3}&\frac{2}{3}\\
+    0&1&-1\\
+  \end{bmatrix}
+  \\\space\\
+  \text{ultimately, we calculate x in terms of A's basis vectors by doing:}
+  \\\space\\
+  [x]_A = A^{-1}_{Left}x = \begin{bmatrix}
+    \frac{1}{3}&-\frac{1}{3}&\frac{2}{3}\\
+    0&1&-1\\
+  \end{bmatrix} \begin{bmatrix}
+    7\\5\\2
+  \end{bmatrix} = \begin{bmatrix}
+    2\\3
+  \end{bmatrix}
+  $$
+
+---
+
+## Orthogonal Bases
+
+- test is just whether the inverse is the same as the transpose:
+  - $Q^{-1} = Q^T \implies Q^TQ = QQ^T = I$
+- Also, orthogonal bases preserve the norm:
+  - $||Qx|| = ||x||$
+  - cuz $||Qx||^2 = {(Qx)}^TQx = x^T(Q^TQ)x = x^Tx = ||x||^2$
+- They also have unit determinants (so $|Q| \pm 1$)
+  basically:
+  - since $Q^{-1}=Q^T$
+  - $|Q^{-1}| = |Q^T| = |Q|$
+  - $\frac{1}{|Q|} = |Q| \implies |Q| = \pm 1$
+
+---
