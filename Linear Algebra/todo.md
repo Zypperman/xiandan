@@ -6,18 +6,21 @@
   - Rotation matrices
 - W9
   - Geometry of Ax=b and column space
+  - Computing Column space
+  - Homogeneous Equation Ax = 0 and Null Space and Row Space
+  - Four Fundamental spaces
+  - Matrix Space through Examples
 
-- Practice for Midterms
+- W9 extra
+  - computing null space
+  - basis of null space
+  - left unempty null space
+
 - do up essay report
 
 ## Less Urgent
 
-- W9
-  - Computing Column space
-  - Homogeneous Equation Ax = 0 and Null Space and Row Space
-  - Four Fundamental spaces
 - W10
-  - Matrix Space through Examples
   - Projection Revisited
   - Projection Matrix and its properties
   - projecting to a subspace

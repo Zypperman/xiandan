@@ -43,6 +43,21 @@
 
 - [Just read this, the comments are pretty good.](https://stackoverflow.com/questions/46677752/the-difference-between-requirex-and-import-x)
 
+---
+
+## Canvas tag
+
+```jsx
+const canvas = document.querySelector("canvas");
+const ctx = canvas.getContext("2d");
+```
+
+- apparently theres a html tag called the `canvas` for drawing stuff.
+    - first line is just how to select tags from a html document.
+        - [[Document: querySelector() method](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector)]
+    - second line is just specific to the canvas tag web API.
+        - [[Documentation: `getContext()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/getContext)]
+
 ## Sources
 
 - [Wes Bos | Chrome dev tool tricks](https://youtu.be/xkzDaKwinA8?si=yzvkN1Ea_cw4XBzo)

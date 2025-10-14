@@ -268,3 +268,40 @@ Singular matrices mean the determinant is 0
   - check if you can formulate a sample vector
   - check whether scaling it doesn't give you a vector in the subspace
   - check whether addition doesn't give you a vector in the subspace
+
+---
+
+## Week 7
+
+- notation stuff
+  - $[x]_A$ &#8594; x written in the basis vectors of A
+  - $\bar{x} = A[x]_A =$ columns of A * components of xA.
+    - $\bar{x}$ is our vector in our identity basis
+    - $A$ is just our new basis matrix
+    - $[x]_A$ is our vector written in terms of the new basis A.
+  - threfore $[x]_A = A^{-1}x$
+
+### For tall matrices
+
+- ie $\mathbb{R}^{3\times2}$
+  - get the left inverse.
+  $$
+  \bar{x} = A[x]_A
+  \\\space\\
+  [x]_A = A^{-1}_{\text{Left}}\bar{x}
+  
+  \\\space\\
+  
+  [x]_A = (A^TA)^{-1}A^T\bar{x}
+  $$
+
+### Orthogonal matrices
+
+- can either be square or tall, but minimally full-column ranked.
+
+- no such thing as 2 vectors that do not intersect with each other since they all need to pass through the origin.
+
+## Why you can't GSP a wide matrix
+
+- because GSP is column dependent, you will have linearly dependent columns so you will get invalid columns at some point, and you can't move on with the process using invalid vectors (like linearly independent ones, they just straight up make no sense).
+- number of angles of rotation = $\frac{n(n-1)}{2}$ where n is the number of dimensions in your vector space.

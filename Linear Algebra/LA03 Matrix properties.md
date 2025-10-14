@@ -293,6 +293,32 @@ multiplying on the left is the same as taking linear combos of the rows of the s
   giving us $mn(2k-1) \implies O(mnk)$, and if we deal with square matrices, its $O(n^3)$.
 - The current best algorithm is the Coppersmith–Winograd algorithm with complexity of $O(n^{2.373})$.
 
+#### <span style="color:cyan">Stupid way of remembering column picture and row picture</span>
+
+given AB = C, think of alphabetical order.
+
+"c comes before r, so use columns on the left matrix (A) to make C"
+
+Column pic:
+
+![column picture](https://eli.thegreenplace.net/images/2015/matcomb.png)
+
+
+"c for columns, use the left matrix as blocks"
+
+- hence, we form the columns of C by taking a linear combination of the columns of A using the components of each column of B.
+  - ie. for column 4 of C, we make it using a linear combination of the columns in A and the components of row 4 of B.
+
+
+Row pic:
+
+![row picture ](https://eli.thegreenplace.net/images/2015/matrowcomb.png)
+
+"r for rows, use the right matrix as blocks"
+
+- hence, we form the rows of C by taking a linear combination of the rows of B using the components of each row in A.
+  - ie. for row 3 of C, we make it using a linear combination of the rows in B and the components of column 3 of A.
+
 ## Matrix Transpose
 
 Take the matrix, draw a line from the top left to the bottom right. Flip your matrix accordingly.

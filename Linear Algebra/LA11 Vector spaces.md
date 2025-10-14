@@ -471,3 +471,60 @@ $$
   - $\frac{1}{|Q|} = |Q| \implies |Q| = \pm 1$
 
 ---
+
+## More on subspaces (Unions and intersections)
+
+Given 2 subspaces, their union may not always be a subspace, but their intersection will always be one.
+
+$$
+\text{given } S_1, S_2,
+\\\space\\
+S_1\cup S_2 \text{ is not a subspace.}
+\\\space\\
+S_1 \cap S_2 \text{ is definitely a subspace.}
+$$
+
+Proof:
+
+$$
+\text{Let }S_1 = \begin{bmatrix}x\\0\\0\end{bmatrix}, S_2 = \begin{bmatrix}0\\y\\z\end{bmatrix}
+$$
+
+where:
+
+- S1 is the subspace of all vectors on the x axis
+- S2 is the subspace of all vectors on the y-z plane
+
+The sum of vectors from these spaces do not belong in the intersection of these spaces:
+
+$$ \begin{bmatrix}x\\0\\0\end{bmatrix}+ \begin{bmatrix}0\\y\\z\end{bmatrix}= \begin{bmatrix}x\\y\\z\end{bmatrix} \notin S_1\cup S_2
+$$
+
+basically, any vector lying on the x-y plane will not be valid.
+
+BUT FOR THE INTERSECTION REQUIREMENT, a subspace has to be the result of what two subspaces have in common.
+
+- in this case, its $\{0\}$, the null-space where only the null vector exists, and the smallest vector space of all.
+
+Another case is if two subspaces are orthogonal, so their intersection can only be the nullspace, but their union is not a subspace.
+
+- in that case, they basically don't share any vectors because they are perpendicular to one another.
+
+### Orthogonal complements
+
+We can define an <span style="color:cyan">**Orthogonal complement**</span> as the subspace where all vectors in it are orthogonal to all vectors in another subspace.
+
+Mathematically:
+
+$$S^{\bot} = \{ x | x^Ty = 0 \space\forall\space y \in S \}$$
+
+ie for 2 subspaces of the x-y plane and the z axis, dot producting either of them gives us 0.
+
+Also, summing the dimensions of these subspaces gives us the number of dimensions in the whole vector space.
+
+<span style="color:red">However, please note that two subspaces are not orthogonal complements if the sum of their dimensions doesn't equal to the whole vector space.</span>
+
+- cuz for 2 subspaces ie only x axis and y axis.
+  - they are orthogonal, but not orthogonal complements.
+  - basically the idea is that they both are combined to form the full vector subspace, hence the term orthogonal complement.
+  - if i can't find the vector in my current subspace, it definitely is in the other subspace.

@@ -181,7 +181,7 @@ This is considered the most efficient way to compute the inverse.
 
 - For tall matrices:
  	- we can do $A^TA$ (so each element of the resultant matrix has a really long computation)
- 	- $A^TA$ can be inverted ($(A^TA)^{-1}A^TA = I \implies ((A^TA)^{-1}A^T)A = I$)
+ 	- $A^TA$ can be inverted ($(A^TA)^{-1}A^TA = I \implies (A^{-1}(A^T)^-1A^T)A = I$)
  	- We thus have $(A^TA)^{-1}A^T$ as a left inverse of A
 - For wide matrices:
  	- we can do $AA^T$

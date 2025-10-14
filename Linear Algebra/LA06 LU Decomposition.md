@@ -223,7 +223,7 @@ Also, this means that we can represent any matrix as 2 matrices:
 ### properties of the L and U matrix
 
 - Since L is composed of only add-row-matrices, it means that $|E| = |L| = 1$
-  - proof: the determinant is just obtained from the diagonal since its a lower triangular, meaning only the first minor matters, and the first minor's determinant is recursively obtained as the product of the main diagonal. Since the main diagonal only has 1s, its determinant is 1.
+  - proof: the determinant is just obtained from the diagonal since its a lower triangular, meaning only the first minor matters, and the first minor's determinant is recursively obtained as the product of the main diagonal. Since the main diagonal only has 1s, its determinant is 1. (but this is only true if the EROs used are not swap-row EROs.)
 
 - Since $|L|=1$, that means you can just use U to find the determinant of A since $|U| = |A|$
   - Once again, its just the product of the diagonal elements since its an upper triangular matrix.

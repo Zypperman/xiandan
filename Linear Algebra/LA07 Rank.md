@@ -44,5 +44,3 @@ For any 2 matrices of the same size:
 - Wide matrices usually have infinite solutions, tall matrices usually have too many equations.
 
 - Matrices can be rank-deficient by n-r (smaller side of rows/cols - current rank)
-
-

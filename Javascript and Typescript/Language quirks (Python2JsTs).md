@@ -978,9 +978,7 @@ The web API [`structuredClone()`](https://developer.mozilla.org/en-US/docs/Web/
         functionName(argumentss) // called with name and parentheses
         ```
 
-    2. *Expression*
-    3.
-    4. *Anonymous functions* &#8212; functions with no name.
+    2. *Anonymous functions* &#8212; functions with no name.
 
         ```Js
         (function () {
@@ -1008,7 +1006,7 @@ The web API [`structuredClone()`](https://developer.mozilla.org/en-US/docs/Web/
         // entirety into the addEventListener method in the textbox.
         ```
 
-    5. *Arrow* &#8212; shortened function syntax.
+    3. *Arrow* &#8212; shortened function syntax.
 
         ```js
         // anon func version
@@ -1486,6 +1484,11 @@ switch (day) {
 ### 16. loops
 
 - for handling arrays, esp creating new ones, its best to use the optimized method `.push(<elem>)` .
+
+> [!note] Sources:
+>
+> - [MDN Docs: JS loops](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Loops)
+> - [Javascript.info](https://javascript.info/while-for)
 
 ### for Loop
 

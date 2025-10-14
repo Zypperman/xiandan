@@ -186,7 +186,7 @@ $$
 
 ## Vector Operations II
 
-### Vector Dot product / inner product / scalar product ($\bold{x_1}\cdot\bold{x_2} = \sum^n_{i=1}{x_{i1} \times x_{i2}}, \bold{x_1},\bold{x_2} \in \mathbb{R}^n$)
+### Vector Dot product / inner product / scalar product ($\bold{x_1}\cdot\bold{x_2} = \sum^n_{i=1}({x_{i1} \space x_{i2}}), \bold{x_1},\bold{x_2} \in \mathbb{R}^n$)
 
 - between two vectors, multiply each component together and sum to get a scalar.
 
@@ -262,7 +262,7 @@ Spans can be the same set as a vector space, or a subset of it.
   - however, the span of $\begin{pmatrix}1 \\1\end{pmatrix},\begin{pmatrix}2 \\2\end{pmatrix}$, they are linearly dependent so they cannot be used to represent the entire vector space. They can only represent a subspace of vector space $\mathbb{R}^2$.
 - **The Dimension of a subspace = the number of linearly independent vectors in said subspace.**
   - However, note that you write it that (given the example of $\begin{pmatrix}1 \\0 \\ 0\end{pmatrix},\begin{pmatrix}0 \\0 \\ 1\end{pmatrix}$) the span of these two vectors is the xz plane in $\mathbb{R}^3$ and it has 2 dimensions.
-        > [!caution]
-        > IT IS NOT THE SAME AS $\mathbb{R}^2$.  
-        > $\mathbb{R}^2$ is not a subset of $\mathbb{R}^3$.
-        > you just say it as it is. Even if your span only has dimensions in X and Y plane, its not the same.
+  > [!caution]
+  > IT IS NOT THE SAME AS $\mathbb{R}^2$.  
+  > $\mathbb{R}^2$ is not a subset of $\mathbb{R}^3$.
+  > you just say it as it is. Even if your span only has dimensions in X and Y plane, its not the same.
