@@ -55,10 +55,16 @@ $$
 
 Effectively, we can call it a subspace, since each vector in A has m components, meaning theres m dimensions in the vector space that the column space cannot fully represent with less than m vectors.
 
+TLDR, C(A) is a subspace of dimension r.
+
+- there are r independent columns in A that can be used to form the basis of C(A).
+- C(A) basically is the set of all linear combinations of the columns of A, and is considered a span.
+- C(A) also has to contain the zero vector.
+
 ### Properly defining a column space
 
 1. write in set notation the space it occupies ie $C(A) \subseteq \mathbb{R}^{m}$
-2. write the dimension of $C(A)$
+2. write the dimension of $C(A)$ (aka the rank of A)
 3. write the basis for C(A).
     - you only need to write out the linearly independent ones.
     - they'll be equivalent, and theres no value in adding in useless ones.
@@ -207,7 +213,7 @@ Ax = b
         with these properties, we can also say that:
     - $C(A^T),N(A) \subseteq \mathbb{R}^{n}$
       - both subspaces are subsets of the vector space
-    - $dim(C(A^T)) + dim(N*(A))=n$
+    - $dim(C(A^T)) + dim(N(A))=n$
       - the total number of dimensions in a vector space is just the sum of the dimensions in the null space and the sum of dimensions in the column space of A-transpose.
     - <span style="color:cyan">Cool new thing: Rank-nullity theorem</span>
       - the rank of the basis of a null space is known termed as a "nullity", just like how you'd use the word rank
@@ -270,15 +276,206 @@ Ax = b
 
 ---
 
-## Left Null spaces (more Null spaces yay...)
+## Left Null spaces (4 spaces total)
 
-- Spaces defined:
-  - C(A) &#8212; Column space of A
-    - a set of vectors from the linear combinations of the rows of A
-  - $C(A^T)$ &#8212; Row space / column space of A-transpose
-    - A set of vectors from the linear combinations of the rows of $A^T$
-  - $N(A)$ &#8212; Null Space
-    - Solution set of Ax=0s
-  - <span style="color:lime">$N(A^T)$ &#8212; Left Null space</span>
-    - Solution set of $A^Ty=0$
-    - basically, how can i get a linear combo of the rows of A to get 0
+You will understand this picture after you read all this.
+
+![diagramatic breakdown of the 4 spaces](https://www.cs.utexas.edu/~flame/laff/alaff/images/Chapter04/FundamentalSpaces.png)
+
+### Spaces defined
+
+- <span style="color:red">C(A) &#8212; Column space of A</span>
+  - a set of vectors from the linear combinations of the rows of A
+- <span style="color:cyan">$C(A^T)$ &#8212; Row space / column space of A-transpose</span>
+  - A set of vectors from the linear combinations of the rows of $A^T$
+- <span style="color:yellow">$N(A)$ &#8212; Null Space</span>
+  - Solution set of Ax=0
+- <span style="color:lime">$N(A^T)$ &#8212; Left Null space</span>
+  - Solution set of $A^Ty=0$
+  - basically, how can i get a linear combo of the rows of A to get 0
+  - named so because $A^Ty = 0$ is the same as $y^TA = 0$ and we're basically finding a linear combination of rows from A to get the 0 vector.
+
+## Mapping spaces
+
+Referencing Ax=b, where $A \in \mathbb{R}^{m\times n}$, $x \mapsto b$ and essentially $A : \mathbb{R}^n \mapsto \mathbb{R}^m$
+
+- for x (the input vector, where $x \in \mathbb{R}^{n}$):
+  - if x is in the null space, $x \mapsto 0$
+    - and this 0 will belong to the column space $C(A)$ which has dimension $\mathbb{R}^{m}$
+    - and be the orthogonal complement to $C(A)$
+  - if x is <span style="color:red">not</span> in the null space, it maps to a non-zero vector in the column space $C(A)$ which has dimension $\mathbb{R}^{m}$
+
+    In math notation, it looks like:
+
+  - if $x \in N(A), x\mapsto 0 \in C(A)$
+  - if $x \notin N(A), x\mapsto b \in C(A)$
+
+    and since any vectors in the null space maps to the 0 vector, a known result (proven above) is that given:
+    $$x_{\parallel} \in C(A^T)$$
+    $$x_{\perp} \in N(A)$$
+    $$A(x_\parallel + x_\perp) = Ax_\parallel$$
+
+    in english, given:
+  - a vector marked parallel that it belongs to the row space
+  - a vector marked perpendicular that belongs to the null space
+  - adding the 2 vectors then multiplying it by A <u>is the same</u> as just using the vector marked parallel.
+  - The only exeption to this is the null vector, which is present in both sets as a requirement.
+
+  - In any case, there are no vectors that are not in either N(A) or $C(A^T)$.
+    - basically, $\{x | x \in N(A), x\notin N(A) \} = \emptyset$.
+    - TLDR, there is no vector $\mathbb{R}^{n}$ that can map to any vectors in the left null space.
+      - $\emptyset \mapsto N(A^T)$
+
+---
+
+### The 4 spaces diagram
+
+For A where rank(A)=r:
+
+<div style="color:lightcoral">
+
+- column space C(A) has dim = r
+- column space is termed the "Image" / "Range", alluding a result of some input from the left hand side, x
+  - think of A as a mirror and x as an object, b is therefore an image.
+  - note, range $\neq$ codomain.
+    - codomain is the whole space of b
+    - range is all the non-zero b that can exist as a result of Ax.
+
+> [!tip]
+> If  b is in the column space, that means there is an x that is its input / a linear combination for it.
+> TLDR, <u>C(A) is a subspace of dimension r in $\mathbb{R}^{m}$.</u>
+
+</div>
+  
+<div style="color:goldenrod">
+
+- Null space N(A) has dim = n-r (right-nullity)
+  - cuz r pivots in C(A) = n-r free variables.
+  - basis for N(A) = vectors for forming special solutions when you solve A with GJE
+  - In any case, its containing space is the input space $\mathbb{R}^{n}$
+- all vectors in it map to the zero vector in C(A)
+    $$Ax \mapsto 0, \space A0 \mapsto 0$$
+
+- Null space is termed the "Kernel"
+  - Kernel's word origin comes from "cyrnel" meaning seed, abstracting to mean core in a homorphism.
+  - in Math context, think of it that the 0 vector basically represents the center of all spaces (ie your normal graphs have an origin of 0)
+    - in LA context, it basically means the vectors in one space, given A, will map to the "center" of our column space.
+
+- TLDR, N(A) is a subspace of $\mathbb{R}^{n}$ of dimension n-r.
+
+</div>
+
+> [!note] Expanding the definition of Kernels with homorphisms in Group Theory
+>
+> - lets have the context of 2 groups, G and H, and we have a function f that maps elements of G to elements of H.
+> - lets also have it that $f(ab) = f(a)f(b)$ (linearity assumption, see LA01)
+> - f's kernel is referred to as the elements of g that f will map to the identity element of H.
+> - adding the context of linear algebra, we can treat:
+>   - the identity element as the null vector since it has basically the same properties
+>   - G and H to be the Row and Column spaces ($C(A^T)$) and $C(A)$ respectively
+>   - N(A) basically fits the definition of a kernel.
+>   - $N(A^T)$ also basically fits the definition of a cokernel.
+>
+> If blur, watch [video](https://youtu.be/j8SQDZ96LVs?si=XOZLVa0ODaDoVovF).
+
+<div style="color:skyblue">
+
+- row space $C(A^T)$ has dim = r
+  - same as column space dimensions = number of pivots in A's REF form
+  - rows of A = columns of $A^T$
+  - independent rows of A are the matched to the corresponding rows of the original A.
+    - that is to say $C(A^T) = C(U^T)$, given $A \xrightarrow{RREF}U$
+- all vectors in it map to a non-zero vector in C(A)
+    $$Ax \mapsto b, \space b \neq 0 \text{ unless } x=0$$
+
+- row space is termed the "coimage".
+  - note, coimage $\neq$ domain.
+    - coimage just refers to all vectors in $C(A^T)$
+    - domain refers to all vectors in input space.
+
+- TLDR $C(A^T)$ is also a subspace of dimension r, with a containing space of $\mathbb{R}^{n}$.
+
+</div>
+
+> [!TIP] space consisting of the null and row space
+>
+> - note that since:
+>   - row space dim = r
+>   - null space dim = n-r
+>
+>   Its technically correct to say that they span $\mathbb{R}^{n}$.
+> - However, since they are not orthogonal complements, it means there are vectors that aren't in either of these spaces.
+> - but luckily it just means that these vectors are just linear combinations of vectors in our two spaces.
+> - apply proof that $A(x_\parallel + x_\perp) = Ax_\parallel \mapsto b$ and basically it still maps to the column space.
+
+<div style="color:darkseagreen">
+
+- Left Null space $N(A^T)$ has dim = m-r
+  - termed "right nullity" of $C(A^T)$.
+
+- no vectors from the input space $\mathbb{R}^{n}$ are mapped to it via A.
+  - basically when
+  $$A^Ty = \bold{0}_{n \times 1} \space (y^TA = 0^T)$$
+    - left Null space A = right null space of $A^T$, so we just denote as $N(A^T)$.
+
+- left null space is termed the "cokernel"
+  - reason being that it maps values from the output space to the center of the row space, which already only points to itself, so you can't make those vectors.
+
+- TLDR, $N(A^T)$ is a subspace of $\mathbb{R}^{m}$ of dimension m-r.
+  - all of y fits in $\mathbb{R}^{m}$.
+
+</div>
+
+### Mappings wrt to domain containing spaces
+
+referring to how we are mapping spaces with $A:\mathbb{R}^{n} \mapsto \mathbb{R}^{m}$
+
+- talking about $\mathbb{R}^{n}$ and $\mathbb{R}^{m}$ respectively
+
+$\mathbb{R}^{n}$ &#8212; termed the "domain"
+
+- informally known as the "input space".
+- consist of linear combinations of columns in $C(A^T)$ and N(A)
+
+$\mathbb{R}^{m}$ &#8212; termed the "Codomain"
+
+- informally known as the "output space".
+- is the "containing space" of C(A)
+- consist of linear combinations of columns in C(A) and $N(A^T)$
+
+### Null space and row space ($N(A) \text{ and } C(A^T)$)
+
+- both are subspaces of $\mathbb{R}^{n}$, the input space
+  - $C(A^T), N(A) \in \mathbb{R}^{n}$
+- the sum of their dimensions gives the dimensions in their containing space
+  - $dim\left( C(A^T) \right)+ dim\left( N(A) \right) = r + n - r = n = dim(\mathbb{R}^n)$
+  - rank + right nullity = n
+- all vectors in the column space are orthogonal to all in the null space.
+  - hence, they are orthogonal complements.
+  - $x_\parallel \in C(A^T) \space \& \space x_\perp \in N(A)\space , \space x_\parallel^Tx_\perp = 0$
+  - proof that they are complements is basically that "if one is in the null space,since their dot product is 0, the other has to be in the column space" and vice versa.
+  - if $x_\parallel^Tx_\perp = 0, x_\parallel \in C(A^T) \implies x_\perp \in N(A)$
+  - if $x_\parallel^Tx_\perp = 0, x_\perp \in N(A) \implies x_\parallel \in C(A^T)$
+
+- because of this complement nature, all vectors in the input space either:
+  - are in N(A) and map to the 0 vector on RHS
+  - are in $C(A^T)$ and map to b in C(A) on the RHS.
+
+- adding a vector from the null space to one from the column space is negligible, produces the same result on the column space.
+
+> [!caution] NOTE: MOST OF THE INPUT SPACE IS NOT IN THE ROW OR NULL SPACE.
+>
+> - example: for $\mathbb{R}^{3}$, $C(A^T)$ = x-y plane, N(A) = Z axis
+> - I can have vectors that are part of both. (basically have 3 non-zero components in them)
+> - in $\mathbb{R}^{n}$ but not the two spaces cuz they're linear combinations of them.
+> - THESE ARE NOT IN $C(A^T)$ NOR N(A)
+> - TLDR, $C(A) \cup N(A) \neq \mathbb{R}^{n}$.
+> 
+
+---
+
+### Calulating left null space
+
+- just work with $A^T$
+- find null space by equating it to $A^Ty=0$
+  - declare set, nullity and basis.
