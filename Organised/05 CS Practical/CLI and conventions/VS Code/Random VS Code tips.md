@@ -1,4 +1,4 @@
-# Random shit you learned about: <u>VS Code</u>
+# Random stuff you learned about: <u>VS Code</u>
 
 - make snippets with searchbar > 'configure snippets' > pick your language > use the format:
 
