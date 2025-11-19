@@ -3,6 +3,7 @@
 Abstractly, it hold as much info about a matrix as possible.
 
 - Can be described as a function of the elements of a matrix.
+  - for calculating the determinant of a $\mathbb{R}^{n\times n}$ matrix, we need to calculate $n!$ terms.
 
 ## 2x2 determinant formula
 

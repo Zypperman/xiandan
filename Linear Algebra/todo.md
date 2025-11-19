@@ -4,16 +4,7 @@
 
 - do up essay report on NNs
 
-- W10
-  - Projection Revisited
-  - Projection Matrix and its properties
-  - projecting to a subspace
-  - Solving unsolvable systems of Ax=b
-  - Linear regression
-  -
 - W11
-  - Eigenvectors and eigenvalues
-  - Eigen Analysis: Computing eigen stuffs
   - Eigenvalue and eigenvector properties
   - motivation for eigenanalysis
   - Powers of matrices, fibbonaci series
@@ -36,3 +27,4 @@
   - Computing SVD
   - Data compression and PCA
   - Pseudo inverses and the symmetry of linearity
+

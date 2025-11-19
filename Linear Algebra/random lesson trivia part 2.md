@@ -76,3 +76,19 @@ A^TA = \begin{bmatrix}a_1 \cdot a_1 & a_1 \cdot a_2 \\ a_2 \cdot a_1 & a_2 \cdot
 $$
 
 - the results of the two vectors dot producting each other give us 1 or 0.
+
+---
+
+## Week 11
+
+Given a square matrix, it will have the same num of eigenvector-eigenvalue pairs as its dimension.
+
+- Algebraic Multiplicity only really matters when you have 2 of the same root.
+  - real, conjugate pairs
+    - in that case, you'll have an eigenspace.
+  - if AM is more than GM, then your matrix is not diagonalizable.
+  - cuz you won't have enough eigenvectors to represent s.
+
+- A matrix is diagonalizable if you have the same GM as AM.
+  - because you won't find a nice number of eigenvalues to do $AS\Lambda S^{-1}$
+  -

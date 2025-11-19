@@ -1,0 +1,1 @@
+# How to configure VS Code for C

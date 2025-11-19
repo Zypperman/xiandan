@@ -301,5 +301,99 @@ However, with $(A - \lambda I)v=0$, that means that the matrix $(A - \lambda I)$
 
 - sum of eigenvalues = Trace / sum of the diagonal elements of your matrix.
     $$
-    \
+    \sum_{i=1}^n \lambda_i= \sum_{i=1}^na_{ii} = trace(A)
     $$
+- product of eigenvalues = Determinant of the matrix
+    $$
+    \prod_{i=1}^n\lambda_i=|A|
+    $$
+
+Proof: link the determinant of the matrix to the characteristic polynomial, and the sum and product of roots ([full video explanation here](https://youtu.be/OLl_reBXY-g?si=GOqKqSgfHt-zEMsd))
+
+1. We define our characteristic polynomial, obtained from $(A-\lambda I)v=0$:
+
+    $$
+    |A - \lambda I| = det(W) = (-1)^n\prod_{i=1}^n(\lambda-\lambda_i)
+    $$
+
+    and our characteristic polynomial is basically in terms of $\lambda$, and we are just trying to find solutions for it:
+
+    $$
+    \prod_{i=1}^n(\lambda-\lambda_i) = (\lambda - \lambda_1)(\lambda - \lambda_2)(\lambda - \lambda_3)...(\lambda - \lambda_n) = a\lambda^{n} + b\lambda^{n-1}+...+c\lambda^0 = 0
+    $$
+
+    where each $\lambda_i$ is a solution and we need to find it, and we treat $\lambda$ as a variable.
+
+    Recall that given:
+    $$
+    f(x) = ax^n+bx^{n-1}+...+cx^0
+    $$
+
+    The sum of roots is $-\frac{b}{a}$, and the product of roots is $\frac{c}{a}$ with a variable sign to it.
+
+    So that means these 3 terms are really important:
+
+    1. The coefficient of $\lambda^n$, a
+
+    2. The coefficient of the next term $\lambda^{n-1}$, b
+
+    3. The coefficient of the last term / constant, c.
+
+    because these terms let us get the sum and product of eigenvalues, which are the roots of the characteristic polynomial.
+
+2. With the right side of our equation, we can try to (referring to the usual way of getting our determinants) expand it while we continue setting $\lambda$ as an unknown.
+
+    $$
+    |A - \lambda I | =
+    |w| = det\left(\begin{bmatrix}
+    a_{11}- \lambda & \cdots & \cdots&\cdots& \cdots \\
+    \cdots & a_{22}- \lambda & \cdots & \cdots & \cdots \\
+    \cdots & \cdots & a_{33}- \lambda & \cdots & \cdots \\
+    \cdots & \cdots & \cdots& \ddots & \cdots \\
+    \cdots & \cdots & \cdots & \cdots& a_{nn}- \lambda
+    \\\space\\
+    \end{bmatrix}\right)
+    $$
+
+    Frankly we don't need the full expansion, but we need the coefficients a,b and c from step 1.
+
+    1. To get coefficient of $\lambda^n$:
+        - The only way to get this term is from the diagonal, where we just multiply all terms along the diagonal. Just test it out with the recursive laplace expansion formula, it doesn't interact or have contributions from any other elements of the matrix.
+            $$
+            det(W) = \sum^n_{i=1}(-1)^{i+1}(a_i1)(|\text{Matrix starting with }a_{jj}-\lambda|)
+            $$
+            - By the laplace expansion, notice how only the first term will ever give you $\lambda^n$, and since the coefficient of all the $(a_i1-\lambda)$ parts, the value will be 1 but the sign just depends on how many times you're multiplying $(-\lambda)$. TLDR, coefficient is $\pm1$.
+
+    2. To get coefficient of  $\lambda^{n-1}$
+        - Once again, refer to the laplace expansion recursive determinant formula.
+        - actually expanding it takes too long, tldr it gives you the trace
+        - the coefficient also happens to give us the opposite sign of the coefficient of $\lambda^n$, so when we sub in the formula for sum of roots, it gives us the sum directly (with no sign flip).
+    3. To get the coefficient of $\lambda^0$
+        - easy, can just sub in $\lambda = 0$ into the caracteristic polynomial to get c i.e. $p(\lambda = 0) = c$
+        - also when you sub into the determinant side, $|A - (0)I| = |A|$
+        - so tldr,c is the determinant of the matrix
+        - the sign of the determinant matches the coefficient of $\lambda^n$.
+        - hence plugging into the product of roots formula gives us exactly that.
+
+### Misc notes from these 2 properties
+
+- for A in $\mathbb{R}$, eigenvalues need to come in complex conjugate pairs.
+- Singular matrices haveat least 1 eigenvalue, being $\lambda=0$.
+
+---
+
+- Eigenvalues of a real symmetric matrices are real
+  - basically if $A^T = A$ and $A \in \mathbb{R}^{n\times n}$, all eigenvalues for A are real.
+
+- Opposite / converse is also true.
+  - Eigenvalues of real, skew-symmetric matrices are fully imaginary.
+  - if $A^T = -A$ and $A \in \mathbb{R}^{n\times n}$, all eigenvalues for A are complex.
+
+- If A has eigenvalues $\lambda_i$, the scaled matrix will just have eigenvalues scaled by the same factor
+  - $A \text{ has } \lambda_i \implies \alpha A \text{ has } \alpha\lambda_i$
+  - proof is just to multiply both sides by $\alpha$
+
+- Translating the matrix by $\alpha$ shifts your eigenalues by alpha as well.
+  - $A+\alpha I$ has eigenvalues $\lambda_i+\alpha$
+
+---

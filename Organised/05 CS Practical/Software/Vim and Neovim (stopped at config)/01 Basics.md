@@ -8,7 +8,7 @@ Disclaimer: Vim !=  vim motions.
 ## Modes
 
 - **Normal Mode** for Navigation
-- **insert Mode** for editing and linting
+- **Insert Mode** for editing and linting
 - **Visual Mode** for highlighting and selecting stuff and clipboard functions
 - **Command Mode** for entering commands to do stuff like save
 
@@ -48,7 +48,7 @@ Motions can be formatted as `<command><count><motion>`.
     - `d` - "delete" - prefix to delete, combine with `<num><motion>`
         - `d` (non-chained)- "delete" - double-tap to delete a line.
         - Behaves functionally like cut, cuz anyway whatever's deleted is sent to the same buffer.
-    - `c` - "change"
+    - `c` - "change" (basically, you remove some shit and enter insert mode to make your edit.)
     - `y` - "yank/copy"
     - `v` - "visual mode" - for highlighting
 
