@@ -28,4 +28,18 @@ The usual way:
 
 The cool way:
 
-- 
+- if your cursor is already between a set of brackets / braces, and you wanna select it, do `vi{` or `va{` to highlight everything
+    - `vi{` - selects everything inside the braces
+    - `va{` - selects everything INCLUDING the braces
+    - and even faster if we just wanna copy, do `ya{` or `yi{`
+
+- to quickly highlight a word your cursor is on its `viw`
+    - bread and butter command, always selects the word.
+    - basically your double-click.
+    - `vi shift w` is to select all text until whitespaces
+    - and then end with a paste.
+    - however this gets rid of your paste content from your buffer, so just use whatever primagen did.
+
+> [!note]
+> any command with position selecting `iw` or `i shift w` is amazing, general command that reduces cognitive load.
+
