@@ -6,7 +6,7 @@ First, make sure you have a package manager of your choice and use the appropria
 
 ## Using Packer
 
-after writing everything nicely, check if your packer file compiles properly with `:so`, then 
+after writing everything nicely, check if your packer file compiles properly with `:so`, then do `:PackerSync` to make packer check that everything's up to date.
 
 ## Essentials
 

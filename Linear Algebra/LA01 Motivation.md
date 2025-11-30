@@ -38,6 +38,15 @@ Functions &#8212; expressions that are defined with a name
     - so $f: \mathbb{R} \mapsto \mathbb{R}, x \in \mathbb{R}$
     - "f is a function that maps any number in the set of real numbers, R, to the same set of real numbers R,"
 
+> [!warning] How to check if your function is single-valued:
+> JUST TO CHECK IF YOUR EXPRESSION IS A VALID FUNCTION:
+>
+> - fundamentally, you need to check whether each input value has a unique output value.
+> - so given 1 x, i can't have f(x) equal to more than 1 value IN YOUR DOMAIN
+> - check with the vertical line test, whether for any vertical line is there only 1 point of intersection.
+> - alt test (inverse test): rewrite the function to be x in terms of f(x), and if you pass the vertical line test on that function, its a function. (if your inverse function is one to one, it means your original is a function.)
+> Specfic to Manoj's class: when you see $f(x) = \sqrt{x}$ it usually means $f(x) = \pm \sqrt{x}$ when its not specified. that means that the function isn't one to one since its like saying $f(x)^2 = x$, which definitely isn't singular-valued..
+
 Equations &#8212; when you set two expressions to be equal to each other as a statement of truth, or just an assignment.
 
 - Between expressions (ie $ax = 0$)

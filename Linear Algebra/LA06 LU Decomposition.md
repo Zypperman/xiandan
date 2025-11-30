@@ -267,7 +267,7 @@ We can rewrite A into $A = PLU$.
 
 - In this case, $|A| = |P||U| = \pm |U|$.
 
-## Using LUD with RREF
+## Using LU Decomp with RREF
 
 - remember to apply all EROs to the whole augment matrix, so even the coefficients feel the effect of add-row transformations.
 

@@ -136,7 +136,7 @@ The line is just there to partition the constants from the coefficients and is j
 > [!tip] Terminology Note:
 > Row Echelon Form &#8212; its what you call the augmented matrix of a system of linear equations.
 
-## RREF and Gaussian elimination
+## REF and Gaussian elimination
 
 Once you have it in REF form, you can start carrying out <u>Elementary Row Operations</u> to convert it into Reduced REF.
 
@@ -269,7 +269,7 @@ As a tree of conditions, check $\begin{bmatrix}A|b\end{bmatrix}$:
 - its tough to compute by hand, easier for computers.
 
 1. Find RREF of the square matrix first, turn it into an upper triangular matrix
-2. if your lower triangle is full of 0s, it means your determinant will just be te product of the diagonals
+2. if your lower triangle is full of 0s, it means your determinant will just be the product of the diagonals
 3. remember to factor back in the scales and row exchanges you did cuz:
     - swapping rows flips the determinant sign
     - adding rows to other rows doesn't change the value
