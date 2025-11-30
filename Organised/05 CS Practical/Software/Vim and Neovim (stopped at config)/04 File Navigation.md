@@ -15,7 +15,7 @@ I term "FE" as the text UI you see after doing `nvim .` or `vim .` from your CLI
 
 ## Important filepaths
 
-- `:h rtp` - enter command mode, do help docs for your runtime directory.
+- `:h rtp` - enter command mode and help docs for your runtime directory.
     - `X_DG_CONFIG_HOME` - folder path where configs are stored
         - default value: `$HOME/.config`.
             - `$HOME` or `~` is where your nvim is installed. by defualt for windows, its `~/AppData/Local/nvim-data`
@@ -37,4 +37,19 @@ For layman purposes, just ignore what $HOME refers to.
 - `:e` - "edit", enter INSERT mode, but now you open a new register / buffer (so you don't have access to what you copied if you had insert mode on another buffer.)
     - buffers can be listed using `:ls`.
 
- 
+## More Vim register Tricks
+
+- apparently `<number>dd` deletes `<number>` lines
+    - same for the other motions, just a faster highlighting trick
+    - [refer here for semantics.](https://vi.stackexchange.com/a/31432)
+
+## running external commands from vim's command mode / bar / thing
+
+Referring to that one line where you can do `:<command>`.
+
+- `:!<shell_cmd>` runs shell commands
+    - i.e. `:!dir` or `:ls` to see file contents
+
+- `:w file.ext` lets you create a file in your command line's current working directory
+    - highlighting stuff then doing `:w file.ext` save selections to a file with that name, storing relative to wherever you opened nvim from.
+- `:r file.ext` reads file content and throws it up after your cursor.

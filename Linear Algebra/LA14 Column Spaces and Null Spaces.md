@@ -97,8 +97,10 @@ Referencing Ax=b:
 
 General solution:
 
-1. Do Gauss-Jordan Elimination to reduce your matrix to RREF
+1. Do Gauss-Jordan Elimination to reduce your matrix to REF
 2. note the columns that have pivots, those are the basis vectors of your space.
+
+- the columns corresponding to the pivot columns in ur REF matrix is the span of your column matrix.
 
 ### Special Cases
 
@@ -286,8 +288,12 @@ You will understand this picture after you read all this.
 
 - <span style="color:red">C(A) &#8212; Column space of A</span>
   - a set of vectors from the linear combinations of the rows of A
+  - Column space basis is made using original matrices' columns corresponding to pivot columns from RREF
 - <span style="color:cyan">$C(A^T)$ &#8212; Row space / column space of A-transpose</span>
   - A set of vectors from the linear combinations of the rows of $A^T$
+  - Row space basis is made using either:
+    - original matrices' rows corresponding to pivot columns from RREF
+    - or the RREF pivot rows themselves.
 - <span style="color:yellow">$N(A)$ &#8212; Null Space</span>
   - Solution set of Ax=0
 - <span style="color:lime">$N(A^T)$ &#8212; Left Null space</span>
@@ -470,7 +476,7 @@ $\mathbb{R}^{m}$ &#8212; termed the "Codomain"
 > - in $\mathbb{R}^{n}$ but not the two spaces cuz they're linear combinations of them.
 > - THESE ARE NOT IN $C(A^T)$ NOR N(A)
 > - TLDR, $C(A) \cup N(A) \neq \mathbb{R}^{n}$.
-> 
+>
 
 ---
 

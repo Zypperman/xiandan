@@ -201,6 +201,8 @@ However, with $(A - \lambda I)v=0$, that means that the matrix $(A - \lambda I)$
 
 - the columns of $(A-\lambda I)$ are linearly dependent.
 - That means the determinant of $(A-\lambda I)$ = 0
+  - because we assume that $(A-\lambda I)$ has a null space thats more than just a null vector (non-trivial)
+  -
 - Without s, determinant of this matrix becomes a scalar
 - and that means we can sub in A directly and use the determinant formula in terms of 0:
   - for the context of A in $\mathbb{R}^{2\times2}$:

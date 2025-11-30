@@ -213,13 +213,16 @@ On the coordinate space, this looks like:
       $$
       so take each column, divide to get length 1, then scale to fit the green vector with the rest of the columns in A.
 4. Depending on the solution type:
+
     ![solution types](https://hadrienj.github.io/assets/images/ch09_system_of_linear_equations/ch09_solutions_systems_equations.png)
     1. For inconsistent equations with no solution:
+
         ![no solutions](https://hadrienj.github.io/assets/images/ch09_system_of_linear_equations/ch09_column_picture_no_solution.png)
         - both red and blue vectors have the same span, but do not share it with the green resultant vector b.
         - That means that there is no combination that the red and blue vectors can add to give the green vector.
 
     2. For infinite solutions:
+
         ![nf solutions](https://hadrienj.github.io/assets/images/ch09_system_of_linear_equations/ch09_column_picture_infinite_solutions.png)
         - one or more of the vectors share the same span with the green resultant vector b.
         - technically, only one of the vectors is needed so you will get some weird representation. The other can kinda not be needed and set to 0.

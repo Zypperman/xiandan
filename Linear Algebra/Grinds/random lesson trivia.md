@@ -305,3 +305,15 @@ Singular matrices mean the determinant is 0
 
 - because GSP is column dependent, you will have linearly dependent columns so you will get invalid columns at some point, and you can't move on with the process using invalid vectors (like linearly independent ones, they just straight up make no sense).
 - number of angles of rotation = $\frac{n(n-1)}{2}$ where n is the number of dimensions in your vector space.
+
+---
+
+- Why categorize matrices as singular or non-singular
+  - singular just means determinant is 0, and the hypervolume of that matrix is just 0.
+  - If A is not singular, then any choice of b vector of constants will have a unique solution.
+  - If A is singular, that means that there exists some vector b where there is no solution or infinite solutions.
+  - dumb origin by leibniz where bro just cared whether the determinant was non-zero or not.
+  - another way to view this is from the POV of functions.
+    - 'singular' in the context of functions = they break at some point.
+    - functions like $f(x) = \frac{1}{x}$ are considered singular because they
+    

@@ -1,5 +1,11 @@
 # Advanced Vim Motions 1
 
+## Running terminal commands in nvim
+
+- `:!<cli_command>` &#8212; sends commands to your terminal to execute, so you can do `:!ls` to list files from your current directory.
+    > [!Caution] Stupid configuration thing for windows Powershell
+    > - if you're unfortunately on windows, doing `:!ls` may not work. If thats the case,
+
 ## Jumping around text-object commands
 
 Example task: replace `new_fn`'s type with `bar`
@@ -38,8 +44,12 @@ The cool way:
     - basically your double-click.
     - `vi shift w` is to select all text until whitespaces
     - and then end with a paste.
+        - same with `vwd` or vwx` for deleting words.
     - however this gets rid of your paste content from your buffer, so just use whatever primagen did.
 
 > [!note]
 > any command with position selecting `iw` or `i shift w` is amazing, general command that reduces cognitive load.
 
+## coding utils
+
+- `gc` after selecting some text comments it out

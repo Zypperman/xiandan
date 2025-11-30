@@ -4,11 +4,20 @@
 
 From NORMAL mode you can move your cursor to:
 
-- `_` - The first non-whitespace character of the current line
+- `0` / `|` - The first character start of the current line
 - `$` - The last character of the current line
-- `0` - The first character start of the current line
+- `_` / `^` / `shift + 6` - The first non-whitespace character of the current line
 
 These work with commands ie. `d$` means you're yeeting everything from the current cursor position to the last char of the current line.
+
+> [!Important] Implicit vs explicit motions
+>
+> - [explained here](https://www.reddit.com/r/vim/comments/haq2t9/comment/fv4bahw/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button).
+>
+> TLDR:, the help description for all these shortcuts phrase it weirdly.
+>
+> - `0` and `|` are only superficially equivalent: `0` explicitly gets you to the first column of the current line while `|` does it implicitly, because you don't give it a count. Prefer explicit over implicit.
+> - `^` and `_` are only superficially equivalent: `^` explicitly gets you to the first printable character of the current line while `_` does it implicitly, because you don't give it a count. Prefer explicit over implicit.
 
 ## Moving to specific characters with "micro-search"
 
@@ -43,3 +52,19 @@ You can treat these like motions and use them with operations to select sections
 
 - `o` - creates a new line below and enters insert mode on that line
 - `shift+o` - creates a new line above and enters insert mode on that line
+
+## jumping between words (repeated from 01 Basics)
+
+- `w` - next word
+- `W` - next word skipping special characters
+- `e` - end of next word
+    - `ge` - end of previous word
+- `b` - beginning of previous word starting from current word
+
+## Fast editing
+
+- `r` to replace the character left of / under your cursor
+- `c <selection>` - delete whatever's selected and enter insert mode to fix it
+    - `shift + C` or `c$` to edit everying till the end of the line
+- `p` to paste after cursor from visual mode
+    - `P` to paste before cursor
