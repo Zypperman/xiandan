@@ -64,6 +64,7 @@ You can treat these like motions and use them with operations to select sections
 ## Fast editing
 
 - `r` to replace the character left of / under your cursor
+    - `shift + r` to enter replace mode, continuously replaces with the next character you type
 - `c <selection>` - delete whatever's selected and enter insert mode to fix it
     - `shift + C` or `c$` to edit everying till the end of the line
 - `p` to paste after cursor from visual mode

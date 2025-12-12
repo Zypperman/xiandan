@@ -52,4 +52,12 @@ Referring to that one line where you can do `:<command>`.
 
 - `:w file.ext` lets you create a file in your command line's current working directory
     - highlighting stuff then doing `:w file.ext` save selections to a file with that name, storing relative to wherever you opened nvim from.
+        - it also automatically give you the `:'<','>'` starting command template so you know you're working with the highlighted stuff.
 - `:r file.ext` reads file content and throws it up after your cursor.
+
+- `Ctrl + d` - tab completion for internal commands, or it just shows you what options you have from your current input.
+    - `<tab>` itself also works.
+
+- `:e file.ext` opens the file in a new buffer.
+    - but this can be changed with `:h autowriteall` to autosave when you open a new buffer.
+
