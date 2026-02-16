@@ -61,6 +61,13 @@ Start with `git <command>`:
 - `tag -a <tag-name> -m "message"` – Create an annotated tag.  
 - `push --tags` – Push tags to remote.
 
+## metadata
+
+- `rev-parse HEAD` - returns the 40-char hash for the latest ccommit
+- `rev-parse --short HEAD` - returns the shortened version of the hash. You can also specify the length, such as `--short=10`
+- `log -n 1 --pretty=format:"%H"` - Uses the git log command with formatting options to output only the hash value. -n 1 limits the output to one commit.
+- `show -s --format=%H` - specifies the format in which the commit information is displayed. '%H' is a placeholder that represents the full commit hash. By using this format, the command outputs only the commit hashes without any additional information
+
 ## Sources
 
 - [git docs](https://git-scm.com/docs)

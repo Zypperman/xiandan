@@ -4,7 +4,9 @@
 
 Git is a way to handle version control for code you write.  
 Github is just where you do this with other people, alongside other cool stuff like automated testing that you see with continuous Integration and Development (CI/CD).  
-  
+
+- frankly its just one of many collaboration tools, you got gitlab, codeberg and more that effectively do the same thing.
+
 Each projects is managed with Git by creating a repository, where a hidden `git` folder will be created in your project folder. This folder contains everything it needs for internal tracking and versioning.
 
 This `.git` folder represents the state of your project's version management.
@@ -20,9 +22,14 @@ This `.git` folder represents the state of your project's version management.
     - different ways to set up and develop stuff
     - everyone can work on their own version and add to the main working version, but still have as few conflicts as possible.
 
-## Important stuff from the article
+## Important stuff
 
 - Make sure to private your email address on the email settings page
+
+    ![GitHub Settings page showing Email visibility options.](https://raw.githubusercontent.com/TheOdinProject/curriculum/725b80d126105d2f717697f97e7eaefb5f886c7b/foundations/installations/setting_up_git/imgs/01.png)
+
+- you can also set up 2FA but its a bit messy.
+
 - open the git bash program on windows or literally just type git into your terminal (for non windows) and set up some configs:
 
     ```sh
